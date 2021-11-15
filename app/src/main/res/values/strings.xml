@@ -3,7 +3,32 @@
     <string name="app_name">SDT</string>
     <!-- 하단 네비게이션바 -->
     <string name="home">홈</string>
-    <string name=""
+    <string name="consumption">소비전력</string>
+    <string name="trade">거래</string>
+    <string name="distribution">분배</string>
+    <string name="resource_management">자원관리</string>
+
     <!-- 전력 거래 메인 -->
+    <!-- 총량 -->
+    <string name="estimated">예측량</string>
+    <string name="total_generated">총 발전량</string>
+    <string name="total_error">총 오차량</string>
+    <string name="total_trade">총 거래 전력량</string>
+    <string name="today_error">오차량</string>
+
+    <!-- 당일 -->
+    <string name="today_total_trade">오늘 총 거래 전력량</string>
+    <string name="today_trade">오늘 거래 전력량</string>
+    <string name="today_estimated_profit">오늘 추정 수익</string>
+    <string name="per_kwh">1KW 당 </string>
+    <string name="won">원</string>
+
     <!-- 전력 거래 프로세스 -->
+    <string name="reservation">거래 예약</string>
+    <string name="sale">전력 판매</string>
+    <string name="today_generated">오늘의 발전량</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

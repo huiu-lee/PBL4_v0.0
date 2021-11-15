@@ -2,41 +2,37 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_icon_home"
-        android:title="홈"
+        android:title="@string/home"
         />
 
     <item
-        android:id="@+id/consumption"
+        android:id="@+id/action_consumption"
         android:enabled="true"
         android:icon="@drawable/ic_icon_consumption"
-        android:title="소비 전력"
+        android:title="@string/consumption"
         />
 
     <item
-        android:id="@+id/trade"
+        android:id="@+id/action_trade"
         android:enabled="true"
         android:icon="@drawable/ic_icon_trade"
-        android:title="거래"
+        android:title="@string/trade"
         />
 
     <item
-        android:id="@+id/distribution"
+        android:id="@+id/action_distribution"
         android:enabled="true"
         android:icon="@drawable/ic_icon_distribution"
-        android:title="분배"
+        android:title="@string/distribution"
         />
 
     <item
-        android:id="@+id/resource_management"
+        android:id="@+id/action_resource_management"
         android:enabled="true"
         android:icon="@drawable/ic_icon_resource_management"
-        android:title="자원 관리"
+        android:title="@string/resource_management"
         />
-
-
-
-
 </menu>
