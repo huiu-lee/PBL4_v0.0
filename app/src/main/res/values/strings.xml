@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">PBL4</string>
+    <!-- 앱 이름 -->
+    <string name="app_name">SDT</string>
+    <!-- 하단 네비게이션바 -->
+    <string name="home">홈</string>
+    <string name=""
+    <!-- 전력 거래 메인 -->
+    <!-- 전력 거래 프로세스 -->
 </resources>

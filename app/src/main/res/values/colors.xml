@@ -7,8 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="main1">#75A488</color>
-    <color name="main2">#385B2F</color>
-    <color name="point1">#658D8C</color>
-    <color name="point2">#E4BD6E</color>
+    <color name="main_green_160">#75A488</color>
+    <color name="main_green_90">#385B2F</color>
+    <color name="point_green_140">#658D8C</color>
+    <color name="point_yellow">#E4BD6E</color>
 </resources>
