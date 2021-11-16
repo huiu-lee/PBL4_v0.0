@@ -1,15 +1,59 @@
 package org.techtown.myapplication
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class TradeMainActivity : AppCompatActivity() {
+
+class TradeMainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_home -> {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frameLayout, homeFragment())
+                transaction.commit()
+                return true
+            }
+            R.id.action_consumption -> {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frameLayout, consumptionFragment())
+                transaction.commit()
+                return true
+            }
+            R.id.action_trade -> {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frameLayout, tradeFragment())
+                transaction.commit()
+                return true
+            }
+
+            R.id.action_distribution -> {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frameLayout, distributionFragment())
+                transaction.commit()
+                return true
+            }
+
+            R.id.action_resource_management -> {
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frameLayout, resourceFragment())
+                transaction.commit()
+                return true
+            }
+
+        }
+        return false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // 홈화면으로 바꿔주기
         setContentView(R.layout.activity_trade_main)
-    }
 
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNav.setOnNavigationItemSelectedListener(this)
+    }
 
 }
