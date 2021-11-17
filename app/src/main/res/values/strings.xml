@@ -11,10 +11,13 @@
     <!-- 전력 거래 메인 -->
     <!-- 총량 -->
     <string name="estimated">예측량</string>
+    <string name="generated">발전량</string>
+    <string name="today_error">오차량</string>
+    <string name="powerplant">발전소</string>
     <string name="total_generated">총 발전량</string>
     <string name="total_error">총 오차량</string>
     <string name="total_trade">총 거래 전력량</string>
-    <string name="today_error">오차량</string>
+    <string name="Wh">Wh</string>
 
     <!-- 당일 -->
     <string name="today_total_trade">오늘 총 거래 전력량</string>
