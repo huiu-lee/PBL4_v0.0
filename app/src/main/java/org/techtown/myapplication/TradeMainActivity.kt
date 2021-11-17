@@ -49,7 +49,7 @@ class TradeMainActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 홈화면으로 바꿔주기
+        // default 화면
         setContentView(R.layout.activity_trade_main)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)

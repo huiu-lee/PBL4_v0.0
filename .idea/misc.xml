@@ -10,13 +10,14 @@
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable/ic_icon_trade.xml" value="0.1" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable/item_colors.xml" value="0.1" />
-        <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/activity_trade_main.xml" value="0.1" />
+        <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable/roundcorner.xml" value="0.31875" />
+        <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/activity_trade_main.xml" value="0.33" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/activity_trade_process.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_consumption.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_distribution.xml" value="0.225" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_home.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_resource.xml" value="0.21041666666666667" />
-        <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_trade.xml" value="0.225" />
+        <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_trade.xml" value="0.25" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/menu/bottomnav.xml" value="0.21203703703703702" />
       </map>
     </option>
