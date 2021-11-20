@@ -6,7 +6,7 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class TradeMainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class mainBottomnavActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -50,7 +50,7 @@ class TradeMainActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // default 화면
-        setContentView(R.layout.activity_trade_main)
+        setContentView(R.layout.activity_main_bottomnav)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.setOnNavigationItemSelectedListener(this)

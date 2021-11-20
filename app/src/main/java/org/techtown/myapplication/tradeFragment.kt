@@ -12,7 +12,7 @@ class tradeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = LayoutInflater.from(activity).inflate(R.layout.fragment_trade, container, false)
+        var view = LayoutInflater.from(activity).inflate(R.layout.fragment_trade_main, container, false)
         return view
     }
 }

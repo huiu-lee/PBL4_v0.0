@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".consumptionDetailActivity">
+
+    <!-- 하단바 -->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="64dp"-->
+<!--        android:background="#75A488"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/homebtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#75A488"-->
+<!--            app:srcCompat="@drawable/home" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/conbtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#75A488"-->
+<!--            app:srcCompat="@drawable/consume" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/tradebtn"-->
+<!--            android:layout_width="61dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#75A488"-->
+<!--            app:srcCompat="@drawable/trade" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/sharebtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#75A488"-->
+<!--            app:srcCompat="@drawable/share" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/managebtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#75A488"-->
+<!--            app:srcCompat="@drawable/manage" />-->
+
+<!--    </LinearLayout>-->
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_left_arrow_24dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="소비전력"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/ic_household" />
+
+    <TextView
+        android:id="@+id/d_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="가구1"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/d_name"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="200dp">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_Itme1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일별" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_Itme3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월별" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_2"
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+
+        </androidx.viewpager2.widget.ViewPager2>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/reportBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_report" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="리포트로 확인"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

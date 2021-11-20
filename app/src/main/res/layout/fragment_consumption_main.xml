@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".consumptionFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!-- 하단바 -->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearLayout"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="64dp"-->
+<!--            android:background="#75A488"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/homebtn"-->
+<!--                app:srcCompat="@drawable/home"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="3dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#75A488" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/conbtn"-->
+<!--                app:srcCompat="@drawable/consume"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="3dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#75A488" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/tradebtn"-->
+<!--                app:srcCompat="@drawable/trade"-->
+<!--                android:layout_width="61dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="3dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#75A488" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/sharebtn"-->
+<!--                app:srcCompat="@drawable/share"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="3dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#75A488" />-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/managebtn"-->
+<!--                app:srcCompat="@drawable/manage"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="3dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#75A488" />-->
+
+<!--        </LinearLayout>-->
+
+        <ImageView
+            android:id="@+id/btn_forward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:srcCompat="@drawable/ic_right_arrow_24dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="36dp" />
+
+        <TextView
+            android:id="@+id/main_month"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="162dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:text="가구1"
+            android:textColor="@color/black"
+            android:textSize="36sp" />
+
+        <ImageView
+            android:id="@+id/btn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:srcCompat="@drawable/ic_left_arrow_24dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_consumption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="25dp"
+            android:tint="@color/point_yellow"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            android:text="소비전력"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+
+
+        <FrameLayout
+            android:id="@+id/consume_frame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_month"
+            android:layout_width="352dp"
+            android:layout_height="357dp"
+            android:layout_marginTop="35dp">
+
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

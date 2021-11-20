@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TradeProcessActivity">
+    tools:context=".tradeProcessActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:tint="@color/point_yellow"
-                app:srcCompat="@drawable/ic_icon_trade" />
+                app:srcCompat="@drawable/ic_trade" />
 
             <TextView
                 android:id="@+id/tradeTitleTv"
@@ -126,22 +126,24 @@
             app:layout_constraintTop_toBottomOf="@id/trade_totalLayout">
 
             <Button
-                android:id="@+id/pointBtn"
+                android:id="@+id/reserveBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundcorner"
                 android:backgroundTint="@color/main_green_90"
                 android:text="거래 예약"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/saleBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundcorner"
                 android:backgroundTint="@color/main_green_90"
                 android:text="전력 판매"
+                android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
         </LinearLayout>

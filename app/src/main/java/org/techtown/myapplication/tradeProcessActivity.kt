@@ -8,7 +8,7 @@ import android.widget.DatePicker
 import kotlinx.android.synthetic.main.activity_trade_process.*
 import java.util.*
 
-class TradeProcessActivity : AppCompatActivity() {
+class tradeProcessActivity : AppCompatActivity() {
     lateinit var dateSetBtn : Button
     var dateString = ""
 

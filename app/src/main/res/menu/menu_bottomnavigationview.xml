@@ -4,35 +4,35 @@
     <item
         android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/ic_icon_home"
+        android:icon="@drawable/ic_home"
         android:title="@string/home"
         />
 
     <item
         android:id="@+id/action_consumption"
         android:enabled="true"
-        android:icon="@drawable/ic_icon_consumption"
+        android:icon="@drawable/ic_consumption"
         android:title="@string/consumption"
         />
 
     <item
         android:id="@+id/action_trade"
         android:enabled="true"
-        android:icon="@drawable/ic_icon_trade"
+        android:icon="@drawable/ic_trade"
         android:title="@string/trade"
         />
 
     <item
         android:id="@+id/action_distribution"
         android:enabled="true"
-        android:icon="@drawable/ic_icon_distribution"
+        android:icon="@drawable/ic_distribution"
         android:title="@string/distribution"
         />
 
     <item
         android:id="@+id/action_resource_management"
         android:enabled="true"
-        android:icon="@drawable/ic_icon_resource_management"
+        android:icon="@drawable/ic_resource_management"
         android:title="@string/resource_management"
         />
 </menu>
