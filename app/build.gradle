@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     // 추가
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -32,11 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
     }
-
 }
 
 dependencies {

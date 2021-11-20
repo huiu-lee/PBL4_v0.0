@@ -15,11 +15,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
 
+
 class consumptionFragment : Fragment() {
 
     val db = Firebase.firestore
 
-    private var _binding: FragmentConmainBinding? = null
+    private var _binding: FragmentConsumptionMainBinding? = null
     private val binding get() = _binding!!
 
     lateinit var btn_back: ImageView
@@ -36,7 +37,6 @@ class consumptionFragment : Fragment() {
 
         main_month = view.findViewById(R.id.main_month)
 
-        //다시 여기서부터 장학금 리스트 프래그먼트 관련 설정
         var n = 0
         setFrag(n)
 
@@ -86,9 +86,9 @@ class consumptionFragment : Fragment() {
         main_month.setOnClickListener {
             var main_name = main_month.text
 
-            _binding = FragmentConmainBinding.inflate(inflater, container, false)
+            _binding = FragmentConsumptionMainBinding.inflate(inflater, container, false)
 
-            var intent = Intent(view.context, c_detail::class.java)
+            var intent = Intent(view.context, consumptionDetailActivity::class.java)
             intent.putExtra("name", main_name)
             startActivity(intent)
         }
