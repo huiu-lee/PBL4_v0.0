@@ -17,19 +17,19 @@
             android:id="@+id/trade_titleLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/trade_totalLayout">
+            app:layout_constraintBottom_toTopOf="@+id/dateTvLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/icon_trade"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="10dp"
                 android:tint="@color/point_yellow"
                 app:srcCompat="@drawable/ic_icon_trade" />
 
@@ -45,20 +45,45 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/dateTvLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/trade_totalLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trade_titleLayout"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dateSetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FF0000"
+                android:text="날짜"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/trade_totalLayout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_margin="20dp"
+            android:layout_marginHorizontal="20dp"
             android:background="@drawable/roundcorner"
             android:elevation="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="35px"
             android:weightSum="1"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/trade_titleLayout"
-            app:layout_constraintBottom_toTopOf="@+id/buttonLayout">
+            app:layout_constraintTop_toBottomOf="@+id/dateTvLayout">
 
 
             <TextView
@@ -93,8 +118,9 @@
             android:id="@+id/buttonLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginHorizontal="20dp"
             android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/trade_kwbtnLayout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trade_totalLayout">
@@ -104,7 +130,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/roundcorner"
-                android:text="0000 point"
+                android:backgroundTint="@color/main_green_90"
+                android:text="거래 예약"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -119,7 +146,116 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TableLayout
+            android:id="@+id/trade_kwbtnLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/today_generatedTvLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLayout">
 
+            <TableRow>
+
+                <Button
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/roundcorner"
+                    android:text="50 KW"
+                    android:textSize="26sp" />
+
+                <Button
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/roundcorner"
+                    android:text="200 KW"
+                    android:textSize="26sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/roundcorner"
+                    android:text="100 KW"
+                    android:textSize="26sp" />
+
+                <Button
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/roundcorner"
+                    android:text="250 KW"
+                    android:textSize="26sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/roundcorner"
+                    android:text="150 KW"
+                    android:textSize="26sp" />
+
+                <Button
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/roundcorner"
+                    android:text="300 KW"
+                    android:textSize="26sp" />
+            </TableRow>
+
+
+        </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/today_generatedTvLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trade_kwbtnLayout"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘 발전량 : "
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0000"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KW"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
