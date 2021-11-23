@@ -139,6 +139,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/style_roundcorner"
+                    android:backgroundTint="@color/main_green_160"
+                    android:textColor="@color/white"
                     android:text="0000 point"
                     android:textSize="25sp"
                     android:textStyle="bold"

@@ -4,23 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_resource.*
-import kotlinx.android.synthetic.main.activity_resource_normal_plant2.*
-import kotlinx.android.synthetic.main.activity_resource_normal_plant2.dealBtn
-import kotlinx.android.synthetic.main.activity_resource_normal_plant2.homeBtn
-import kotlinx.android.synthetic.main.activity_resource_normal_plant2.resourceBtn
-import kotlinx.android.synthetic.main.activity_resource_normal_plant2.shareBtn
-import kotlinx.android.synthetic.main.activity_resource_normal_plant2.useBtn
+import kotlinx.android.synthetic.main.activity_resource_plant.*
 
-class Resource_Normal_plant2 : AppCompatActivity() {
+class resourcePlantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_resource_normal_plant2)
+        setContentView(R.layout.activity_resource_plant)
         // 홈버튼을 click으로 유지
         resourceBtn.setImageResource(R.drawable.ic_resource_bottombar_click)
 
         // 메뉴 페이지로 넘어감, 홈버튼 클릭시 click 이미지로 변경
         homeBtn.setOnClickListener{
-            var intent = Intent(this, MainActivity::class.java)
+            var intent = Intent(this, mainFragment::class.java)
             startActivity(intent)
             homeBtn.setImageResource(R.drawable.ic_home_bottombar_click)
         }
