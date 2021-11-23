@@ -1,14 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/home" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager_head"
+        android:layout_width="417dp"
+        android:layout_height="155dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/main_dateTv"
+        android:visibility="visible"
+        android:layout_width="126dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:gravity="top"
+        android:text="2021.11.14"
+        android:textColor="@color/white"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="57dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager_head"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/indicator0_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/shape_circle_gray" />
+
+        <ImageView
+            android:id="@+id/indicator1_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator0_iv_main"
+            app:layout_constraintStart_toEndOf="@+id/indicator0_iv_main"
+            app:layout_constraintTop_toTopOf="@+id/indicator0_iv_main"
+            app:srcCompat="@drawable/shape_circle_white" />
+
+        <ImageView
+            android:id="@+id/indicator2_iv_main"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator1_iv_main"
+            app:layout_constraintStart_toEndOf="@+id/indicator1_iv_main"
+            app:layout_constraintTop_toTopOf="@+id/indicator1_iv_main"
+            app:srcCompat="@drawable/shape_circle_white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="251dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager_head"
+        app:layout_constraintVertical_bias="0.328"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="96dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager_middle"
+        app:layout_constraintVertical_bias="0.161"
+        tools:ignore="DuplicateIds,MissingConstraints">
+
+        <ImageView
+            android:id="@+id/indicator0_iv_middle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/shape_circle_point" />
+
+        <ImageView
+            android:id="@+id/indicator1_iv_middle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator0_iv_middle"
+            app:layout_constraintStart_toEndOf="@+id/indicator0_iv_middle"
+            app:layout_constraintTop_toTopOf="@+id/indicator0_iv_middle"
+            app:srcCompat="@drawable/shape_circle_gray" />
+
+        <ImageView
+            android:id="@+id/indicator2_iv_middle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator1_iv_middle"
+            app:layout_constraintStart_toEndOf="@+id/indicator1_iv_middle"
+            app:layout_constraintTop_toTopOf="@+id/indicator1_iv_middle"
+            app:srcCompat="@drawable/shape_circle_gray" />
+
+        <ImageView
+            android:id="@+id/indicator3_iv_middle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/indicator2_iv_middle"
+            app:layout_constraintStart_toEndOf="@+id/indicator2_iv_middle"
+            app:layout_constraintTop_toTopOf="@+id/indicator2_iv_middle"
+            app:srcCompat="@drawable/shape_circle_gray" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/main_green_160"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="10dp"
+            android:text="SDT"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!--드로어 여는 버튼-->
+    <ImageButton
+        android:id="@+id/btnOpen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="7.5dp"
+        android:layout_marginStart="3dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_hambuger"/>
+
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="@color/main_green_160"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <ImageButton
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_green_160"
+            app:srcCompat="@drawable/ic_home_bottombar"
+            tools:ignore="MissingConstraints"/>
+
+        <ImageButton
+            android:id="@+id/useBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_green_160"
+            app:srcCompat="@drawable/ic_consumption_bottombar"
+            tools:ignore="MissingConstraints"/>
+
+        <ImageButton
+            android:id="@+id/dealBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_green_160"
+            tools:ignore="MissingConstraints"
+            app:srcCompat="@drawable/ic_trade_bottombar" />
+
+        <ImageButton
+            android:id="@+id/shareBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_green_160"
+            tools:ignore="MissingConstraints"
+            app:srcCompat="@drawable/ic_distribution_bottombar" />
+
+        <ImageButton
+            android:id="@+id/resourceBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_green_160"
+            tools:ignore="MissingConstraints"
+            app:srcCompat="@drawable/ic_resource_bottombar" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

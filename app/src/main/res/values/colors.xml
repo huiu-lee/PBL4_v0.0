@@ -11,4 +11,11 @@
     <color name="main_green_90">#385B2F</color>
     <color name="point_green_140">#658D8C</color>
     <color name="point_yellow">#E4BD6E</color>
+    <color name="gray">#D8D8D8</color>
+    <color name="main_dark_gray">#B4BAB3</color>
+    <color name="main_light_green">#D3E0D1</color>
+    <color name="point_red">#970F0F</color>
+    <color name="point_check_brown">#524343</color>
+    <color name="main_prediction">#707070</color>
+
 </resources>
