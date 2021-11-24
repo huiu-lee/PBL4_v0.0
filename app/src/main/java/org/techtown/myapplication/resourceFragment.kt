@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import kotlinx.android.synthetic.main.activity_resource.*
 
 class resourceFragment : Fragment() {
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -16,4 +18,7 @@ class resourceFragment : Fragment() {
         var view = LayoutInflater.from(activity).inflate(R.layout.fragment_resource, container, false)
         return view
     }
+
+
+
 }
