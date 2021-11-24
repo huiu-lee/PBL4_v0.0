@@ -1,5 +1,6 @@
 package org.techtown.myapplication
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,6 +28,9 @@ class consumptionFragment : Fragment() {
     lateinit var btn_back: ImageView
     lateinit var btn_forward: ImageView
 
+    lateinit var c_middle : TextView
+    lateinit var c_measure : TextView
+
     lateinit var main_month: TextView
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -35,10 +40,26 @@ class consumptionFragment : Fragment() {
         btn_back = view.findViewById(R.id.btn_back)
         btn_forward = view.findViewById(R.id.btn_forward)
 
+        c_middle = view.findViewById(R.id.c_middle)
+        c_measure = view.findViewById(R.id.c_measure)
+
         main_month = view.findViewById(R.id.main_month)
 
         var n = 0
-        setFrag(n)
+
+        //특정 데이터 값 갖고 오기!
+        db.collection("users").whereEqualTo("name", "가구1").get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    var x = document["measure"] as Number
+                    var y = document["middle"] as Number
+                    c_measure.text = x.toString() + "kw"
+                    c_middle.text = "평균 " + y.toString() + "KW"
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }
 
         btn_forward.setOnClickListener {
             if (n == 0 || n == 1) {
@@ -48,15 +69,54 @@ class consumptionFragment : Fragment() {
             when (n) {
                 0 -> {
                     main_month.text = "가구1"
-                    setFrag(0)
+
+                    //특정 데이터 값 갖고 오기!
+                    db.collection("users").whereEqualTo("name", "가구1").get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                var x = document["measure"] as Number
+                                var y = document["middle"] as Number
+                                c_measure.text = x.toString() + "kw"
+                                c_middle.text = "평균 " + y.toString() + "KW"
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        }
                 }
                 1 -> {
                     main_month.text = "가구2"
-                    setFrag(1)
+
+                    //특정 데이터 값 갖고 오기!
+                    db.collection("users").whereEqualTo("name", "가구2").get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                var x = document["measure"] as Number
+                                var y = document["middle"] as Number
+                                c_measure.text = x.toString() + "kw"
+                                c_middle.text = "평균 " + y.toString() + "KW"
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        }
                 }
                 2 -> {
                     main_month.text = "가구3"
-                    setFrag(2)
+
+                    //특정 데이터 값 갖고 오기!
+                    db.collection("users").whereEqualTo("name", "가구3").get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                var x = document["measure"] as Number
+                                var y = document["middle"] as Number
+                                c_measure.text = x.toString() + "kw"
+                                c_middle.text = "평균 " + y.toString() + "KW"
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        }
                 }
             }
         }
@@ -69,15 +129,54 @@ class consumptionFragment : Fragment() {
             when (n) {
                 0 -> {
                     main_month.text = "가구1"
-                    setFrag(0)
+
+                    //특정 데이터 값 갖고 오기!
+                    db.collection("users").whereEqualTo("name", "가구1").get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                var x = document["measure"] as Number
+                                var y = document["middle"] as Number
+                                c_measure.text = x.toString() + "kw"
+                                c_middle.text = "평균 " + y.toString() + "KW"
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        }
                 }
                 1 -> {
                     main_month.text = "가구2"
-                    setFrag(1)
+
+                    //특정 데이터 값 갖고 오기!
+                    db.collection("users").whereEqualTo("name", "가구2").get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                var x = document["measure"] as Number
+                                var y = document["middle"] as Number
+                                c_measure.text = x.toString() + "kw"
+                                c_middle.text = "평균 " + y.toString() + "KW"
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        }
                 }
                 2 -> {
                     main_month.text = "가구3"
-                    setFrag(2)
+
+                    //특정 데이터 값 갖고 오기!
+                    db.collection("users").whereEqualTo("name", "가구3").get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                var x = document["measure"] as Number
+                                var y = document["middle"] as Number
+                                c_measure.text = x.toString() + "kw"
+                                c_middle.text = "평균 " + y.toString() + "KW"
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        }
                 }
             }
         }
@@ -168,22 +267,5 @@ class consumptionFragment : Fragment() {
             // 실패할 경우
             Log.w(TAG, "Error getting documents.", exception)
         }*/
-    }
-
-    //프래그먼트 넘기기
-    private fun setFrag(fragnum: Int) {
-        val ft = (activity as AppCompatActivity).supportFragmentManager.beginTransaction()
-
-        when (fragnum) {
-            0 -> {
-                ft.replace(R.id.consume_frame, consumptionPCFragment()).commit()
-            }
-//            1 -> {
-//                ft.replace(R.id.consume_frame, frag_c2()).commit()
-//            }
-//            2 -> {
-//                ft.replace(R.id.consume_frame, frag_c3()).commit()
-//            }
-        }
     }
 }
