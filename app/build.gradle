@@ -61,6 +61,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
     compileOnly 'com.google.android.wearable:wearable:2.6.0'
 
+    //Distribution
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
 
