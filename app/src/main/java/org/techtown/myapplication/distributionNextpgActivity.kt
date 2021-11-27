@@ -19,13 +19,13 @@ class distributionNextpgActivity : AppCompatActivity() {
 
         chart2.clearChart()
 
-        chart2.addBar(BarModel("71W",71f,0xFFE6E6A6.toInt()))
-        chart2.addBar(BarModel("50W",50f,0xFFE6E6A6.toInt()))
-        chart2.addBar(BarModel("64W",64f,0xFFE6E6A6.toInt()))
-        chart2.addBar(BarModel("80W",80f,0xFFE6E6A6.toInt()))
-        chart2.addBar(BarModel("20W",20f,0xFFE6E6A6.toInt()))
-        chart2.addBar(BarModel("43W",43f,0xFFE6E6A6.toInt()))
-        chart2.addBar(BarModel("100W",100f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("월",71f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("화",50f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("수",64f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("목",80f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("금",20f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("토",43f,0xFFE6E6A6.toInt()))
+        chart2.addBar(BarModel("일",100f,0xFFE6E6A6.toInt()))
 
         chart2.startAnimation()
 
