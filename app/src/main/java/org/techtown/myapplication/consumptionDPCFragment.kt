@@ -21,13 +21,8 @@ class consumptionDPCFragment : Fragment() {
     lateinit var to_day: TextView
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view =
-            inflater.inflate(R.layout.fragment_consumption_dpc, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_consumption_dpc, container, false)
 
         two_ago = view.findViewById(R.id.two_ago)
         one_ago = view.findViewById(R.id.one_mon)

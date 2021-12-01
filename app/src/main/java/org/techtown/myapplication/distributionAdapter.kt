@@ -43,8 +43,6 @@ class distributionAdapter (private val items: ArrayList<Data>): RecyclerView.Ada
         fun bind(listener: View.OnClickListener, item:Data){
             //view.img1.setImageDrawable(item.img1)
             view.txt1.text=item.name
-            view.txt2.text=item.ww.toString()
-            // view.img2.setImageDrawable(item.img2)
             view.setOnClickListener(listener)
 
         }

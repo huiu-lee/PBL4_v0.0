@@ -13,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
@@ -20,7 +24,7 @@ import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
 
 class consumptionFragment : Fragment() {
 
-    val db = Firebase.firestore
+    val database = Firebase.database
 
     private var _binding: FragmentConsumptionMainBinding? = null
     private val binding get() = _binding!!
@@ -47,19 +51,30 @@ class consumptionFragment : Fragment() {
 
         var n = 0
 
+        var myRef1 = database.getReference("user1").child("measure")
         //특정 데이터 값 갖고 오기!
-        db.collection("users").whereEqualTo("name", "가구1").get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var x = document["measure"] as Number
-                    var y = document["middle"] as Number
-                    c_measure.text = x.toString() + "kw"
-                    c_middle.text = "평균 " + y.toString() + "KW"
-                }
+        //리얼타임 데이터베이스 읽기
+        myRef1.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value = datasnapshot?.value
+                c_measure.text = value.toString() + "W"
             }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
+        })
+        var myRef2 = database.getReference("user1").child("middle")
+        //특정 데이터 값 갖고 오기!
+        //리얼타임 데이터베이스 읽기
+        myRef2.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value = datasnapshot?.value
+                c_middle.text = value.toString() + "W"
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
 
         btn_forward.setOnClickListener {
             if (n == 0 || n == 1) {
@@ -70,53 +85,81 @@ class consumptionFragment : Fragment() {
                 0 -> {
                     main_month.text = "가구1"
 
+                    var myRef1 = database.getReference("user1").child("measure")
                     //특정 데이터 값 갖고 오기!
-                    db.collection("users").whereEqualTo("name", "가구1").get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                var x = document["measure"] as Number
-                                var y = document["middle"] as Number
-                                c_measure.text = x.toString() + "kw"
-                                c_middle.text = "평균 " + y.toString() + "KW"
-                            }
+                    myRef1.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_measure.text = value.toString()  + "W"
                         }
-                        .addOnFailureListener { exception ->
-                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
+                    })
+                    var myRef2 = database.getReference("user1").child("middle")
+
+                    myRef2.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_middle.text = value.toString() + "W"
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                        }
+                    })
                 }
                 1 -> {
                     main_month.text = "가구2"
 
+                    var myRef1 = database.getReference("user2").child("measure")
                     //특정 데이터 값 갖고 오기!
-                    db.collection("users").whereEqualTo("name", "가구2").get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                var x = document["measure"] as Number
-                                var y = document["middle"] as Number
-                                c_measure.text = x.toString() + "kw"
-                                c_middle.text = "평균 " + y.toString() + "KW"
-                            }
+                    myRef1.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_measure.text = value.toString() + "W"
                         }
-                        .addOnFailureListener { exception ->
-                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
+                    })
+                    var myRef2 = database.getReference("user2").child("middle")
+
+                    myRef2.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_middle.text = value.toString() + "W"
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                        }
+                    })
                 }
                 2 -> {
                     main_month.text = "가구3"
 
                     //특정 데이터 값 갖고 오기!
-                    db.collection("users").whereEqualTo("name", "가구3").get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                var x = document["measure"] as Number
-                                var y = document["middle"] as Number
-                                c_measure.text = x.toString() + "kw"
-                                c_middle.text = "평균 " + y.toString() + "KW"
-                            }
+                    var myRef1 = database.getReference("user3").child("measure")
+
+                    myRef1.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_measure.text = value.toString() + "W"
                         }
-                        .addOnFailureListener { exception ->
-                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
+                    })
+                    var myRef2 = database.getReference("user3").child("middle")
+
+                    myRef2.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_middle.text = value.toString() + "W"
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                        }
+                    })
                 }
             }
         }
@@ -131,52 +174,82 @@ class consumptionFragment : Fragment() {
                     main_month.text = "가구1"
 
                     //특정 데이터 값 갖고 오기!
-                    db.collection("users").whereEqualTo("name", "가구1").get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                var x = document["measure"] as Number
-                                var y = document["middle"] as Number
-                                c_measure.text = x.toString() + "kw"
-                                c_middle.text = "평균 " + y.toString() + "KW"
-                            }
+                    var myRef1 = database.getReference("user1").child("measure")
+
+                    myRef1.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_measure.text = value.toString() + "W"
                         }
-                        .addOnFailureListener { exception ->
-                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
+                    })
+                    var myRef2 = database.getReference("user1").child("middle")
+                    //특정 데이터 값 갖고 오기!
+                    //리얼타임 데이터베이스 읽기
+                    myRef2.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_middle.text = value.toString() + "W"
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                        }
+                    })
                 }
                 1 -> {
                     main_month.text = "가구2"
 
                     //특정 데이터 값 갖고 오기!
-                    db.collection("users").whereEqualTo("name", "가구2").get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                var x = document["measure"] as Number
-                                var y = document["middle"] as Number
-                                c_measure.text = x.toString() + "kw"
-                                c_middle.text = "평균 " + y.toString() + "KW"
-                            }
+                    var myRef1 = database.getReference("user2").child("measure")
+                    myRef1.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_measure.text = value.toString() + "W"
                         }
-                        .addOnFailureListener { exception ->
-                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
+                    })
+                    var myRef2 = database.getReference("user2").child("middle")
+
+                    myRef2.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_middle.text = value.toString() + "W"
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                        }
+                    })
                 }
                 2 -> {
                     main_month.text = "가구3"
 
                     //특정 데이터 값 갖고 오기!
-                    db.collection("users").whereEqualTo("name", "가구3").get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                var x = document["measure"] as Number
-                                var y = document["middle"] as Number
-                                c_measure.text = x.toString() + "kw"
-                                c_middle.text = "평균 " + y.toString() + "KW"
-                            }
+                    var myRef1 = database.getReference("user3").child("measure")
+
+                    myRef1.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_measure.text = value.toString() + "W"
                         }
-                        .addOnFailureListener { exception ->
-                            Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
+                    })
+                    var myRef2 = database.getReference("user3").child("middle")
+
+                    myRef2.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(datasnapshot: DataSnapshot) {
+                            val value = datasnapshot?.value
+                            c_middle.text = value.toString() + "W"
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                        }
+                    })
                 }
             }
         }
@@ -193,79 +266,5 @@ class consumptionFragment : Fragment() {
         }
 
         return view
-
-        /*var measure = ""
-
-        //특정 데이터 값 갖고 오기!
-        db.collection("users").whereEqualTo("name", main_name).get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var x = document["measure"] as Number
-                    measure = x.toString()
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
-            }*/
-
-        /*val db = Firebase.firestore
-
-        textView1 = findViewById(R.id.textView1)
-        textView2 = findViewById(R.id.textView2)
-        textView3 = findViewById(R.id.textView3)
-
-        val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815
-        )
-
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
-
-        val user2 = hashMapOf(
-            "first" to "Alan",
-            "last" to "Turing",
-            "born" to 1999
-        )
-
-        db.collection("users")
-            .add(user2)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
-
-        db.collection("users").get().addOnSuccessListener { result ->
-            for (document in result) {
-                Log.d(TAG, "${document.id} => ${document.data}")
-
-                user(document["born"] as Number, document["first"] as String, document["last"] as String)
-                var y = document["first"] as String
-                textView2.text = y
-            }
-        }.addOnFailureListener { exception ->
-            Log.w(TAG, "Error getting documents.", exception)
-        }
-
-        db.collection("users").get().addOnSuccessListener { result ->
-
-            for (document in result) {  // 가져온 문서들은 result에 들어감
-                //val item = user(document["born"] as Int, document["first"] as String, document["last"] as String)
-                var x = document["born"] as Number
-                textView3.text = x.toString()
-            }
-        }.addOnFailureListener { exception ->
-            // 실패할 경우
-            Log.w(TAG, "Error getting documents.", exception)
-        }*/
     }
 }
