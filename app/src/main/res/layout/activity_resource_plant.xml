@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
         tools:ignore="MissingConstraints" />
 
@@ -36,7 +36,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.015"
         tools:ignore="MissingConstraints" />
 
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,UseAppTint" />
 
     <TextView
@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.93"
         tools:ignore="MissingConstraints" />
 
@@ -192,107 +192,5 @@
         app:layout_constraintStart_toStartOf="@+id/rectangle_normal"
         tools:ignore="MissingConstraints" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/main_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/main_green_160"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/toolbar_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginRight="10dp"
-            android:text="SDT"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="normal" />
-    </androidx.appcompat.widget.Toolbar>
-
-    <!--드로어 여는 버튼-->
-    <ImageButton
-        android:id="@+id/btnOpen"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="7.5dp"
-        android:layout_marginStart="3dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_hambuger"/>
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/menu"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="64dp"-->
-<!--        android:background="@color/point"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" >-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/homeBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="@color/point"-->
-<!--            app:srcCompat="@drawable/ic_home_bottombar"-->
-<!--            tools:ignore="MissingConstraints" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/useBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="@color/point"-->
-<!--            app:srcCompat="@drawable/ic_consumption_bottombar"-->
-<!--            tools:ignore="MissingConstraints" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/dealBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="@color/point"-->
-<!--            tools:ignore="MissingConstraints"-->
-<!--            app:srcCompat="@drawable/ic_trade_bottombar" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/shareBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="@color/point"-->
-<!--            tools:ignore="MissingConstraints"-->
-<!--            app:srcCompat="@drawable/ic_distribution_bottombar" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/resourceBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="@color/point"-->
-<!--            tools:ignore="MissingConstraints"-->
-<!--            app:srcCompat="@drawable/ic_resource_bottombar" />-->
-<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainBottomnavActivity"
+    tools:context=".mainActivity"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -50,7 +50,7 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemBackground="@color/point"
+        app:itemBackground="@color/main_green_160"
         app:itemIconTint="@drawable/item_colors"
         app:itemTextColor="@drawable/item_colors"
         app:labelVisibilityMode="labeled"
