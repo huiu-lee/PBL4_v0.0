@@ -258,8 +258,6 @@ class consumptionFragment : Fragment() {
         main_month.setOnClickListener {
             var main_name = main_month.text
 
-            _binding = FragmentConsumptionMainBinding.inflate(inflater, container, false)
-
             var intent = Intent(view.context, consumptionDetailActivity::class.java)
             intent.putExtra("name", main_name)
             startActivity(intent)

@@ -1,32 +1,50 @@
 package org.techtown.myapplication
 
-import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_resource.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class resourceFragment : Fragment() {
 
-    lateinit var powerPlant2: ImageView
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        var view = LayoutInflater.from(activity).inflate(R.layout.activity_resource, container, false)
-        powerPlant2 = view.findViewById(R.id.powerPlant2)
-        powerPlant2.setOnClickListener{
-            var intent = Intent(view.context, resourcePlantActivity::class.java)
-            startActivity(intent)
-        }
+    private lateinit var Resadapter : ResAdapter
+
+//    var viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ListViewModel::class.java)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = LayoutInflater.from(activity).inflate(R.layout.fragment_resource, container, false)
+
+        var viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ListViewModel::class.java)
+
+        Resadapter = ResAdapter(this)
+
+        val recyclerView : RecyclerView = view.findViewById(R.id.res_rec)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
+        recyclerView.adapter = Resadapter
+        observerData(viewModel)
 
         return view
     }
 
+    fun observerData(viewModel: ListViewModel){
+        viewModel.fetchData().observe(this, Observer {
+            Resadapter.setListData(it)
+            Resadapter.notifyDataSetChanged()
+        })
+    }
 
-
+    fun Fragment.getViewModelStoreOwner(): ViewModelStoreOwner = try {
+        requireActivity()
+    } catch (e: IllegalStateException) {
+        this
+    }
 }

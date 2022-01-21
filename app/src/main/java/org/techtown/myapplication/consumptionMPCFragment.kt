@@ -36,6 +36,9 @@ class consumptionMPCFragment : Fragment() {
         var a = month.toInt() + 1
         var b = (a - 1).toString()
         var c = (a - 2).toString()
+        if(b == "0") b = "12"
+        if(c == "-1") c = "11"
+        if(c == "0") c = "12"
 
         to_mon.text = a.toString() + "월"
         one_mon.text = b + "월"

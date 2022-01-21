@@ -17,5 +17,6 @@
     <color name="point_red">#970F0F</color>
     <color name="point_check_brown">#524343</color>
     <color name="main_prediction">#707070</color>
+    <color name="point">#75A488</color>
 
 </resources>

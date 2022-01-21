@@ -1,9 +1,11 @@
 package org.techtown.myapplication
 
+import android.content.ContentValues
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +13,18 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.dinuscxj.progressbar.CircleProgressBar
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_consumption_detail.*
 import java.util.*
 
 // 데이 리포트
 class consumptionDPCFragment : Fragment() {
+
+    val database = Firebase.database
 
     lateinit var two_ago: TextView
     lateinit var one_ago: TextView
@@ -31,6 +41,16 @@ class consumptionDPCFragment : Fragment() {
         val instance = Calendar.getInstance()
         val date = instance.get(Calendar.DATE).toString()
 
+        var cd_name = d_name.text
+        var x = ""
+
+        if (cd_name == "가구1"){
+            x = "1"
+        } else if (cd_name == "가구2"){
+            x = "2"
+        } else{
+            x = "3"
+        }
 
         var a = 0
         var b = ""
@@ -59,10 +79,27 @@ class consumptionDPCFragment : Fragment() {
         var graph_max2 = mSolidProgressBar2.max
         var graph_max3 = mSolidProgressBar3.max
 
+        var y = "0"
+
+        var myRef1 = database.getReference("user").child(x).child("measure")
+        //특정 데이터 값 갖고 오기!
+        //리얼타임 데이터베이스 읽기
+        myRef1.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value = datasnapshot?.value
+                y = value.toString()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
+
         mSolidProgressBar1.progress = 20
         var graph_progress1 = mSolidProgressBar1.progress
-        mSolidProgressBar2.progress = 50
+
+        mSolidProgressBar2.progress = y.toInt()
         var graph_progress2 = mSolidProgressBar2.progress
+
         mSolidProgressBar3.progress = 75
         var graph_progress3 = mSolidProgressBar3.progress
 

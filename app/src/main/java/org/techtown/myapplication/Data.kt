@@ -1,4 +1,5 @@
 package org.techtown.myapplication
 
-class Data (val name:String){
+class Data (var name:String = "name", var measure : Int = 0){
+
 }

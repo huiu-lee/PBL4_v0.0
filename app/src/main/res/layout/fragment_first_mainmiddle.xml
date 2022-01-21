@@ -55,13 +55,12 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/prediction_plant1"
+        android:id="@+id/home_name"
         android:layout_width="73dp"
         android:layout_height="26dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:elevation="4dp"
-        android:text="발전소 1"
         android:textColor="@color/main_prediction"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
