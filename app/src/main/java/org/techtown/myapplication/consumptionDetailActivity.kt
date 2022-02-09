@@ -30,9 +30,19 @@ class consumptionDetailActivity : AppCompatActivity() {
 
         viewPager2.adapter=adapter
 
-        var name = intent.getStringExtra("name")
+        var name = intent.getStringExtra("name").toString()
 
         d_name.text = name
+
+        var x = ""
+
+        if (name == "가구1"){
+            x = "1"
+        } else if (name == "가구2"){
+            x = "2"
+        } else{
+            x = "3"
+        }
 
         //탭 레이아웃 이름 설정
         TabLayoutMediator(tabLayout,viewPager2){tab,position->

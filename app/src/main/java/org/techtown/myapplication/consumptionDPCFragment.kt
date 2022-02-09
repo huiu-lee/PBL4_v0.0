@@ -41,17 +41,6 @@ class consumptionDPCFragment : Fragment() {
         val instance = Calendar.getInstance()
         val date = instance.get(Calendar.DATE).toString()
 
-        var cd_name = d_name.text
-        var x = ""
-
-        if (cd_name == "가구1"){
-            x = "1"
-        } else if (cd_name == "가구2"){
-            x = "2"
-        } else{
-            x = "3"
-        }
-
         var a = 0
         var b = ""
         var c = ""
@@ -81,23 +70,10 @@ class consumptionDPCFragment : Fragment() {
 
         var y = "0"
 
-        var myRef1 = database.getReference("user").child(x).child("measure")
-        //특정 데이터 값 갖고 오기!
-        //리얼타임 데이터베이스 읽기
-        myRef1.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(datasnapshot: DataSnapshot) {
-                val value = datasnapshot?.value
-                y = value.toString()
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-            }
-        })
-
         mSolidProgressBar1.progress = 20
         var graph_progress1 = mSolidProgressBar1.progress
 
-        mSolidProgressBar2.progress = y.toInt()
+        mSolidProgressBar2.progress = 57
         var graph_progress2 = mSolidProgressBar2.progress
 
         mSolidProgressBar3.progress = 75
