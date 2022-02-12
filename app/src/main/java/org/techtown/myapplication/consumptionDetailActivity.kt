@@ -1,19 +1,34 @@
 package org.techtown.myapplication
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class consumptionDetailActivity : AppCompatActivity() {
+    val database = Firebase.database
 
     lateinit var back : ImageView
     lateinit var report : ImageView
     lateinit var d_name : TextView
+
+    var name : String = ""
+
+    lateinit var yy_day : String
+    lateinit var y_day : String
+    lateinit var t_day : String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +45,10 @@ class consumptionDetailActivity : AppCompatActivity() {
 
         viewPager2.adapter=adapter
 
-        var name = intent.getStringExtra("name").toString()
+        name = intent.getStringExtra("name").toString()
 
         d_name.text = name
 
-        var x = ""
-
-        if (name == "가구1"){
-            x = "1"
-        } else if (name == "가구2"){
-            x = "2"
-        } else{
-            x = "3"
-        }
 
         //탭 레이아웃 이름 설정
         TabLayoutMediator(tabLayout,viewPager2){tab,position->

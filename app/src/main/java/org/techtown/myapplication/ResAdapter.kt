@@ -16,18 +16,40 @@ class ResAdapter (private val context: resourceFragment): RecyclerView.Adapter<R
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item,parent, false)
 
-        ViewHolder(view).apply {
-            itemView.setOnClickListener {
+        var view : View?
+        var view2 : View?
 
-                var intent = Intent(view.context, resourcePlantActivity::class.java)
-                intent.putExtra("name", res_name.text)
-                view.context.startActivity(intent)
+        return when(viewType){
+            1 -> {
+                view2 = LayoutInflater.from(parent.context).inflate(
+                    R.layout.item,
+                    parent,
+                    false
+                )
+                ViewHolder(view2).apply {
+                    itemView.setOnClickListener {
+                        var intent = Intent(view2.context, resourcePlantActivity::class.java)
+                        intent.putExtra("name", res_name.text)
+                        view2.context.startActivity(intent)
+                    }
+                }
+            }
+            else -> {
+                view = LayoutInflater.from(parent.context).inflate(
+                    R.layout.item_r,
+                    parent,
+                    false
+                )
+                ViewHolder(view).apply {
+                    itemView.setOnClickListener {
+                        var intent = Intent(view.context, resourcePlantActivity::class.java)
+                        intent.putExtra("name", res_name.text)
+                        view.context.startActivity(intent)
+                    }
+                }
             }
         }
-
-        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ResAdapter.ViewHolder, position: Int) {
@@ -43,5 +65,9 @@ class ResAdapter (private val context: resourceFragment): RecyclerView.Adapter<R
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val res_name : TextView = itemView.findViewById(R.id.res_name)
         val res_mea : TextView = itemView.findViewById(R.id.res_mea)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return userList[position].status
     }
 }
