@@ -43,7 +43,7 @@ class ResAdapter (private val context: resourceFragment): RecyclerView.Adapter<R
                 )
                 ViewHolder(view).apply {
                     itemView.setOnClickListener {
-                        var intent = Intent(view.context, resourcePlantActivity::class.java)
+                        var intent = Intent(view.context, resourcePlantActivity_red::class.java)
                         intent.putExtra("name", res_name.text)
                         view.context.startActivity(intent)
                     }

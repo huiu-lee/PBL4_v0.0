@@ -11,10 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
-
+        <activity android:name=".resourcePlantActivity_red"></activity>
         <activity android:name=".distributionNextpgActivity" />
-
         <activity
             android:name=".consumptionReportActivity"
             android:exported="false" />
@@ -29,8 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".resourcePlantActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".resourcePlantActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
