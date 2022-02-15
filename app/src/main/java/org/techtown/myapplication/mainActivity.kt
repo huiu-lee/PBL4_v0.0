@@ -22,10 +22,11 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         // 툴바 사용
         setSupportActionBar(findViewById(R.id.toolBar))
 
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true) // 왼쪽 홈버튼
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_hambuger) // 왼쪽 홈버튼 모양 햄버거로 변경
+        //supportActionBar!!.setDisplayHomeAsUpEnabled(true) // 왼쪽 홈버튼
+        //supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_hambuger) // 왼쪽 홈버튼 모양 햄버거로 변경
 
         supportActionBar!!.setDisplayShowTitleEnabled(false) // 툴바에 SDT 제목 보이기
+
         // 하단바 사용
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.setOnNavigationItemSelectedListener(this)
