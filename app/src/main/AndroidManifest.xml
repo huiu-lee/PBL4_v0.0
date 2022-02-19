@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".resourcePlantActivity_red"></activity>
+        <activity
+            android:name=".AdduserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity android:name=".resourcePlantActivity_red" />
         <activity android:name=".distributionNextpgActivity" />
         <activity
             android:name=".consumptionReportActivity"
