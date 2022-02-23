@@ -40,7 +40,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item!!.itemId) {
             R.id.action_sidemenu -> {
-                // 사이드바 열 때 동작
+
 
             }
         }

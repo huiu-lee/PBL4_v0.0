@@ -23,6 +23,8 @@ import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
 
 
 class consumptionFragment : Fragment() {
+    lateinit var logingo : TextView
+    lateinit var safe : TextView
 
     val database = Firebase.database
 
@@ -48,6 +50,9 @@ class consumptionFragment : Fragment() {
         c_measure = view.findViewById(R.id.c_measure)
 
         main_month = view.findViewById(R.id.main_month)
+
+        logingo = view.findViewById(R.id.logingo)
+        safe = view.findViewById(R.id.safe)
 
         var n = 0
 
@@ -262,6 +267,16 @@ class consumptionFragment : Fragment() {
             intent.putExtra("name", main_name)
             startActivity(intent)
         }
+
+        logingo.setOnClickListener {
+            var intent = Intent(view.context, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        safe.setOnClickListener {
+            var intent = Intent(view.context, Logout_Activity::class.java)
+            startActivity(intent)
+        }
+
 
         return view
     }
