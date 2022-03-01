@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -53,6 +54,11 @@ class consumptionFragment : Fragment() {
 
         logingo = view.findViewById(R.id.logingo)
         safe = view.findViewById(R.id.safe)
+
+        //getSupportActionBar().setTitle(" what you want")
+        //activity()
+        // 툴바 사용
+
 
         var n = 0
 

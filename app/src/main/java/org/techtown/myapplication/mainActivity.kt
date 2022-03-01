@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.ListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,6 +27,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         //supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_hambuger) // 왼쪽 홈버튼 모양 햄버거로 변경
 
         supportActionBar!!.setDisplayShowTitleEnabled(false) // 툴바에 SDT 제목 보이기
+        supportActionBar!!.setTitle("시발")
 
         // 하단바 사용
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -39,10 +41,10 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item!!.itemId) {
-            R.id.action_sidemenu -> {
-
-
-            }
+//            R.id.action_sidemenu -> {
+//
+//
+//            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -52,20 +54,32 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     
     // 하단바 페이지 바꾸기
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var title : String = ""
+
         when(item.itemId) {
+
             R.id.action_home -> {
+                title = "어플 이름"
+                supportActionBar!!.setTitle("어플이름")
+
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, homeFragment())
                 transaction.commit()
                 return true
             }
             R.id.action_consumption -> {
+                title = "소비 전력"
+                supportActionBar!!.setTitle(title)
+
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, consumptionFragment())
                 transaction.commit()
                 return true
             }
             R.id.action_trade -> {
+                title = "거래"
+                supportActionBar!!.setTitle(title)
+
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, tradeFragment())
                 transaction.commit()
@@ -73,18 +87,25 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
             R.id.action_distribution -> {
+                title = "분배"
+                supportActionBar!!.setTitle(title)
+
                 val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.frameLayout, distributionFragment())
+                transaction.replace(R.id.frameLayout, mypageFragment())
                 transaction.commit()
                 return true
             }
 
             R.id.action_resource_management -> {
+                title = "자원관리"
+                supportActionBar!!.setTitle(title)
+
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, resourceFragment())
                 transaction.commit()
                 return true
             }
+
 
         }
         return false
