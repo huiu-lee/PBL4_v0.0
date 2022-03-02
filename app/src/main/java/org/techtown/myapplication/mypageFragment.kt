@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.main.MySharedPreferences
 import com.google.firebase.database.*
@@ -36,15 +37,29 @@ class mypageFragment : Fragment() {
         var x = MySharedPreferences.getUserPass(view.context)
 
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("Users").child("users").child(x)
-        databaseReference.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(datasnapshot: DataSnapshot) {
-                val value = datasnapshot?.value
-                hhhh.text = value.toString()
+        databaseReference = database.getReference("Users").child("users")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postsnapshot in dataSnapshot.children) {
+
+                    var value = postsnapshot.getValue<User>()
+
+                    if (value!!.password == x) {
+
+                        var myRef1 = database.getReference("Users").child("users").child(value.id).child("point")
+                        myRef1.addValueEventListener(object: ValueEventListener {
+                            override fun onDataChange(datasnapshot: DataSnapshot) {
+                                val value = datasnapshot?.value
+                                point.text = value.toString()
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                            }
+                        })
+                    }
+                }
             }
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
 
         name.text = MySharedPreferences.getUserId(view.context)
@@ -72,26 +87,5 @@ class mypageFragment : Fragment() {
 
         return view
     }
-
-//    private fun isname (){
-//        databaseReference.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                var list = java.util.ArrayList<User>()
-//                for (postsnapshot in dataSnapshot.children) {
-//
-//                    var value = postsnapshot.getValue<User>()
-//                    name.text = value!!.email
-//                    //name1.text = value!!.id
-//
-//                    list.add(value!!)
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                //안 적음
-//            }
-//        })
-//    }
 }
 

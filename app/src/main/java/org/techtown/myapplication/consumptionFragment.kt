@@ -24,9 +24,6 @@ import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
 
 
 class consumptionFragment : Fragment() {
-    lateinit var logingo : TextView
-    lateinit var safe : TextView
-
     val database = Firebase.database
 
     private var _binding: FragmentConsumptionMainBinding? = null
@@ -51,9 +48,6 @@ class consumptionFragment : Fragment() {
         c_measure = view.findViewById(R.id.c_measure)
 
         main_month = view.findViewById(R.id.main_month)
-
-        logingo = view.findViewById(R.id.logingo)
-        safe = view.findViewById(R.id.safe)
 
         //getSupportActionBar().setTitle(" what you want")
         //activity()
@@ -264,8 +258,6 @@ class consumptionFragment : Fragment() {
                 }
             }
         }
-
-
         main_month.setOnClickListener {
             var main_name = main_month.text
 
@@ -273,35 +265,6 @@ class consumptionFragment : Fragment() {
             intent.putExtra("name", main_name)
             startActivity(intent)
         }
-
-        logingo.setOnClickListener {
-            var intent = Intent(view.context, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-        safe.setOnClickListener {
-            
-//            // fragment에서 SharedPreferences 사용시 선언
-//            val preferences = this.activity!!
-//                .getSharedPreferences("pref", 0)
-//
-//            // requireContext() = this - activity에서
-//            MySharedPreferences.clearUser(requireContext())
-//
-//            // fragment에서 intent로 activity를 넘어감
-//            activity?.let{
-//                val intent = Intent(context, LoginActivity::class.java)
-//                startActivity(intent)
-//            }
-//
-//            // activity의 finish()
-//            activity?.supportFragmentManager
-//                ?.beginTransaction()
-//                ?.remove(this)
-//                ?.commit()
-        }
-
-
         return view
     }
 }
