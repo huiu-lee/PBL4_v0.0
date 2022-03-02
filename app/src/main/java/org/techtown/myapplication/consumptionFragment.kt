@@ -1,24 +1,24 @@
 package org.techtown.myapplication
 
 import android.content.ContentValues
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.ActionBar
+import com.example.main.MySharedPreferences
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
 
@@ -278,9 +278,30 @@ class consumptionFragment : Fragment() {
             var intent = Intent(view.context, LoginActivity::class.java)
             startActivity(intent)
         }
+
         safe.setOnClickListener {
-            var intent = Intent(view.context, Logout_Activity::class.java)
-            startActivity(intent)
+            
+            // fragment에서 SharedPreferences 사용시 선언
+            val preferences = this.activity!!
+                .getSharedPreferences("pref", 0)
+
+            // requireContext() = this - activity에서
+            MySharedPreferences.clearUser(requireContext())
+
+            // fragment에서 intent로 activity를 넘어감
+            activity?.let{
+                val intent = Intent(context, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
+            // activity의 finish()
+            activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.remove(this)
+                ?.commit()
+
+//            var intent = Intent(view.context, Logout_Activity::class.java)
+//            startActivity(intent)
         }
 
 

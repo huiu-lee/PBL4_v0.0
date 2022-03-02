@@ -90,10 +90,10 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 title = "분배"
                 supportActionBar!!.setTitle(title)
 
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.frameLayout, mypageFragment())
-                transaction.commit()
-                return true
+//                val transaction = supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.frameLayout, mypageFragment())
+//                transaction.commit()
+//                return true
             }
 
             R.id.action_resource_management -> {

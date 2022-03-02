@@ -1,6 +1,7 @@
 package org.techtown.myapplication
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.main.MySharedPreferences
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_login.*
@@ -24,13 +26,43 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
         database = FirebaseDatabase.getInstance()
         databaseReference = database.getReference("Users").child("users")
 
-        loginbut.setOnClickListener {
-            login()
+        // SharedPreferences 안에 값이 저장되어 있지 않을 때 -> Login
+        if(MySharedPreferences.getUserId(this).isNullOrBlank()
+            || MySharedPreferences.getUserPass(this).isNullOrBlank()) {
+
+            loginbut.setOnClickListener {
+
+                var email = editTextTextEmailAddress.text.toString().trim()
+                var password = editTextTextPassword.text.toString().trim()
+
+                if(email.isNullOrBlank() || password.isNullOrBlank()) {
+                    Toast.makeText(this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show()
+                } else {
+                    if (isValidEmail(email)) {
+                        isEmailExist(email, password)
+                        MySharedPreferences.setUserId(this, email)
+                        MySharedPreferences.setUserPass(this, password)
+                    }
+
+                    Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+
+                    var intent = Intent(this, mainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        } else { // SharedPreferences 안에 값이 저장되어 있을 때 -> MainActivity로 이동
+            Toast.makeText(this, "${MySharedPreferences.getUserId(this)}님 자동 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, mainActivity::class.java)
+            startActivity(intent)
+
+            finish()
         }
+
 
         adduserbut.setOnClickListener {
             var intent = Intent(this, AdduserActivity::class.java)
@@ -41,22 +73,7 @@ class LoginActivity : AppCompatActivity() {
         logout.setOnClickListener {
             showCustomAlert()
         }
-    }
 
-    // 이메일, 패스워드 입력
-    private fun login() {
-        var email = editTextTextEmailAddress.text.toString().trim()
-        var password = editTextTextPassword.text.toString().trim()
-
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this@LoginActivity, "All fields required", Toast.LENGTH_SHORT).show()
-        } else {
-            if (isValidEmail(email)) {
-                isEmailExist(email, password)
-            } else {
-                Toast.makeText(this, "Check your email address", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     // 이메일 유효성 검사
@@ -84,7 +101,6 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 if (isemailexist) {
-                    Toast.makeText(this@LoginActivity, "Login Successfull", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext, mainActivity::class.java))
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed! check your email address and password", Toast.LENGTH_SHORT).show()

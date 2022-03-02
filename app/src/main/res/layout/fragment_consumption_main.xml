@@ -13,69 +13,6 @@
         android:layout_height="match_parent"
         >
 
-        <!-- 하단바 -->
-<!--        <LinearLayout-->
-<!--            android:id="@+id/linearLayout"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="64dp"-->
-<!--            android:background="#75A488"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/homebtn"-->
-<!--                app:srcCompat="@drawable/home"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:backgroundTint="#75A488" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/conbtn"-->
-<!--                app:srcCompat="@drawable/consume"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:backgroundTint="#75A488" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/tradebtn"-->
-<!--                app:srcCompat="@drawable/trade"-->
-<!--                android:layout_width="61dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:backgroundTint="#75A488" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/sharebtn"-->
-<!--                app:srcCompat="@drawable/share"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:backgroundTint="#75A488" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/managebtn"-->
-<!--                app:srcCompat="@drawable/manage"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:backgroundTint="#75A488" />-->
-
-<!--        </LinearLayout>-->
-
         <ImageView
             android:id="@+id/btn_forward"
             app:layout_constraintEnd_toEndOf="parent"
