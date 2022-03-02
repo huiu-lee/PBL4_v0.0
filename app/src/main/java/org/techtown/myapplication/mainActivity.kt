@@ -27,7 +27,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         //supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_hambuger) // 왼쪽 홈버튼 모양 햄버거로 변경
 
         supportActionBar!!.setDisplayShowTitleEnabled(false) // 툴바에 SDT 제목 보이기
-        supportActionBar!!.setTitle("시발")
+        supportActionBar!!.setTitle("")
 
         // 하단바 사용
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -90,10 +90,10 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 title = "분배"
                 supportActionBar!!.setTitle(title)
 
-//                val transaction = supportFragmentManager.beginTransaction()
-//                transaction.replace(R.id.frameLayout, mypageFragment())
-//                transaction.commit()
-//                return true
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frameLayout, mypageFragment())
+                transaction.commit()
+                return true
             }
 
             R.id.action_resource_management -> {

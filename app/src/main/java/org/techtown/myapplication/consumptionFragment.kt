@@ -281,27 +281,24 @@ class consumptionFragment : Fragment() {
 
         safe.setOnClickListener {
             
-            // fragment에서 SharedPreferences 사용시 선언
-            val preferences = this.activity!!
-                .getSharedPreferences("pref", 0)
-
-            // requireContext() = this - activity에서
-            MySharedPreferences.clearUser(requireContext())
-
-            // fragment에서 intent로 activity를 넘어감
-            activity?.let{
-                val intent = Intent(context, LoginActivity::class.java)
-                startActivity(intent)
-            }
-
-            // activity의 finish()
-            activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(this)
-                ?.commit()
-
-//            var intent = Intent(view.context, Logout_Activity::class.java)
-//            startActivity(intent)
+//            // fragment에서 SharedPreferences 사용시 선언
+//            val preferences = this.activity!!
+//                .getSharedPreferences("pref", 0)
+//
+//            // requireContext() = this - activity에서
+//            MySharedPreferences.clearUser(requireContext())
+//
+//            // fragment에서 intent로 activity를 넘어감
+//            activity?.let{
+//                val intent = Intent(context, LoginActivity::class.java)
+//                startActivity(intent)
+//            }
+//
+//            // activity의 finish()
+//            activity?.supportFragmentManager
+//                ?.beginTransaction()
+//                ?.remove(this)
+//                ?.commit()
         }
 
 
