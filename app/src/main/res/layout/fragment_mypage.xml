@@ -163,7 +163,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
         <ImageView
-            android:id="@+id/imageView16"
+            android:id="@+id/btn_n2"
             android:layout_width="32dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
@@ -183,7 +183,7 @@
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/btn_n1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -204,13 +204,13 @@
             app:layout_constraintStart_toEndOf="@+id/imageView17" />
 
         <ImageView
-            android:id="@+id/imageView18"
+            android:id="@+id/btn_n3"
             android:layout_width="23dp"
             android:layout_height="35dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/mypage_narrow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView12" />
+            app:layout_constraintTop_toTopOf="@+id/btn_n1" />
 
         <ImageView
             android:id="@+id/imageView19"

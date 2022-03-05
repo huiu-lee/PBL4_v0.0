@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -17,12 +18,17 @@ import com.example.main.MySharedPreferences
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_consumption_main.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 
 class mypageFragment : Fragment() {
 
     lateinit var logout_btn : Button
     lateinit var name : TextView
+
+    lateinit var btn_n1 : TextView
+    lateinit var btn_n2 : ImageView
+    lateinit var btn_n3 : ImageView
 
     lateinit var database : FirebaseDatabase
     lateinit var databaseReference: DatabaseReference
@@ -33,6 +39,10 @@ class mypageFragment : Fragment() {
 
         logout_btn = view.findViewById(R.id.logout_btn)
         name = view.findViewById(R.id.name)
+
+        btn_n1 = view.findViewById(R.id.btn_n1)
+        btn_n2 = view.findViewById(R.id.btn_n2)
+        btn_n3 = view.findViewById(R.id.btn_n3)
 
         var x = MySharedPreferences.getUserPass(view.context)
 
@@ -83,6 +93,18 @@ class mypageFragment : Fragment() {
                 ?.beginTransaction()
                 ?.remove(this)
                 ?.commit()
+        }
+        btn_n1.setOnClickListener {
+            var intent = Intent(view.context, noticeActivity::class.java)
+            startActivity(intent)
+        }
+        btn_n2.setOnClickListener {
+            var intent = Intent(view.context, noticeActivity::class.java)
+            startActivity(intent)
+        }
+        btn_n3.setOnClickListener {
+            var intent = Intent(view.context, noticeActivity::class.java)
+            startActivity(intent)
         }
 
         return view

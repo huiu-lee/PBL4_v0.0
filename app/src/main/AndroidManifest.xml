@@ -11,20 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Logout_Activity"></activity>
+        <activity android:name=".notice_detail_Activity"></activity>
+        <activity android:name=".noticeActivity" />
+        <activity android:name=".Logout_Activity" />
         <activity
             android:name=".AdduserActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".resourcePlantActivity_red" />
         <activity android:name=".distributionNextpgActivity" />
