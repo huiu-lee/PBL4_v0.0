@@ -2,13 +2,18 @@ package org.techtown.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_notice_detail.*
+import kotlinx.android.synthetic.main.activity_resource_plant.*
 
 class notice_detail_Activity : AppCompatActivity() {
 
     val database = Firebase.database
+
+    lateinit var back_notice : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +21,8 @@ class notice_detail_Activity : AppCompatActivity() {
 
         var d_title = findViewById<TextView>(R.id.d_title)
         var d_content = findViewById<TextView>(R.id.d_content)
+
+        back_notice = findViewById(R.id.back_notice)
 
         var x = ""
         var y = ""
@@ -34,5 +41,9 @@ class notice_detail_Activity : AppCompatActivity() {
         d_title.text = x
         d_content.text = y
 
+        // 뒤로가기 버튼
+        back_notice.setOnClickListener{
+            finish()
+        }
     }
 }

@@ -49,6 +49,11 @@ class noticeActivity : AppCompatActivity() {
             notiadapter.setListData(it)
             notiadapter.notifyDataSetChanged()
         })
+
+        // 뒤로가기 버튼
+        back_no.setOnClickListener{
+            finish()
+        }
     }
 
 }
