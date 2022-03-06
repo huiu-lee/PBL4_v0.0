@@ -36,7 +36,7 @@ class AdduserActivity : AppCompatActivity() {
                 if (isValidEmail(email)) {
 
                     var id = databaseReference.push().key
-                    val User = User(email, password, safeNum, id!!)
+                    val User = User(email, password, safeNum, id!!, measure = 0)
 
                     //Data Inserted
                     databaseReference.child(id).setValue(User)

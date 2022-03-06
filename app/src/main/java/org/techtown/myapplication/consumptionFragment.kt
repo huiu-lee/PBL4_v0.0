@@ -1,30 +1,30 @@
 package org.techtown.myapplication
 
 import android.content.ContentValues
-import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import android.content.Intent
-import android.content.SharedPreferences
-import android.os.Build
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import com.example.main.MySharedPreferences
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import androidx.fragment.app.Fragment
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_main.*
 import org.techtown.myapplication.databinding.FragmentConsumptionMainBinding
 
 
 class consumptionFragment : Fragment() {
     val database = Firebase.database
+
+    lateinit var database2 : FirebaseDatabase
+    lateinit var databaseReference2: DatabaseReference
 
     private var _binding: FragmentConsumptionMainBinding? = null
     private val binding get() = _binding!!
@@ -36,6 +36,8 @@ class consumptionFragment : Fragment() {
     lateinit var c_measure : TextView
 
     lateinit var main_month: TextView
+
+    lateinit var hj : TextView
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -49,8 +51,11 @@ class consumptionFragment : Fragment() {
 
         main_month = view.findViewById(R.id.main_month)
 
+        hj = view.findViewById(R.id.hj)
+
         //getSupportActionBar().setTitle(" what you want")
         //activity()
+
         // 툴바 사용
 
 
@@ -265,6 +270,36 @@ class consumptionFragment : Fragment() {
             intent.putExtra("name", main_name)
             startActivity(intent)
         }
+
+        var x = 0
+
+        database2 = FirebaseDatabase.getInstance()
+        databaseReference2 = database2.getReference("Users").child("users")
+
+        databaseReference2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                var list = java.util.ArrayList<User>()
+
+                val test : Map<String, String>? = dataSnapshot.getValue() as Map<String,String>?
+
+                for (postsnapshot in dataSnapshot.children) {
+
+
+
+                    var value = postsnapshot.getValue<User>()
+
+                    if (value!!.measure > 0) {
+                        list.add(value!!)
+//                        hj.text = list[x].email.toString()
+
+                        x++
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
         return view
     }
 }

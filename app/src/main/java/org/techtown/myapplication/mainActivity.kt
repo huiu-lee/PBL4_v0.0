@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.ListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 // 메인 화면
 class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
+    lateinit var toolbar_text : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // default 화면
@@ -21,13 +26,12 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         transaction.commit()
 
         // 툴바 사용
+        toolbar_text = findViewById(R.id.toolbar_text)
         setSupportActionBar(findViewById(R.id.toolBar))
 
-        //supportActionBar!!.setDisplayHomeAsUpEnabled(true) // 왼쪽 홈버튼
-        //supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_hambuger) // 왼쪽 홈버튼 모양 햄버거로 변경
 
         supportActionBar!!.setDisplayShowTitleEnabled(false) // 툴바에 SDT 제목 보이기
-        supportActionBar!!.setTitle("")
+//        supportActionBar!!.setTitle("ss")
 
         // 하단바 사용
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -59,8 +63,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when(item.itemId) {
 
             R.id.action_home -> {
-                title = "어플 이름"
-                supportActionBar!!.setTitle("어플이름")
+                toolbar_text.text = "어플 이름"
 
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, homeFragment())
@@ -68,8 +71,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 return true
             }
             R.id.action_consumption -> {
-                title = "소비 전력"
-                supportActionBar!!.setTitle(title)
+                toolbar_text.text = "소비 전력"
 
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, consumptionFragment())
@@ -77,8 +79,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 return true
             }
             R.id.action_trade -> {
-                title = "거래"
-                supportActionBar!!.setTitle(title)
+                toolbar_text.text = "거래"
 
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, tradeFragment())
@@ -87,8 +88,7 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
             R.id.action_distribution -> {
-                title = "분배"
-                supportActionBar!!.setTitle(title)
+                toolbar_text.text = "마이페이지"
 
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, mypageFragment())
@@ -97,20 +97,14 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
             R.id.action_resource_management -> {
-                title = "자원관리"
-                supportActionBar!!.setTitle(title)
+                toolbar_text.text = "자원 관리"
 
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frameLayout, resourceFragment())
                 transaction.commit()
                 return true
             }
-
-
         }
         return false
     }
-
-
-
 }
