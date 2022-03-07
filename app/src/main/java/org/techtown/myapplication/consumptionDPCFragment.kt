@@ -70,11 +70,11 @@ class consumptionDPCFragment : Fragment() {
         var x = ""
 
         if (name == "가구1"){
-            x = "1"
+            x = "-MwCVkmDQ7lbUpG05BRH"
         } else if (name == "가구2"){
-            x = "2"
+            x = "-MwCYBGzYzjVVbwU5yW_"
         } else{
-            x = "3"
+            x = "-MwEUIbjtRA4j1wQjo_3"
         }
 
         var mSolidProgressBar1 =
@@ -92,7 +92,7 @@ class consumptionDPCFragment : Fragment() {
         var graph_max2 = mSolidProgressBar2.max
         var graph_max3 = mSolidProgressBar3.max
 
-        var myRef1 = database.getReference("user").child(x).child("yyday")
+        var myRef1 = database.getReference("Users").child("users").child(x).child("yyday")
         //특정 데이터 값 갖고 오기!
         //리얼타임 데이터베이스 읽기
         myRef1.addValueEventListener(object: ValueEventListener {
@@ -105,7 +105,7 @@ class consumptionDPCFragment : Fragment() {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })
-        var myRef2 = database.getReference("user").child(x).child("yday")
+        var myRef2 = database.getReference("Users").child("users").child(x).child("yday")
         //특정 데이터 값 갖고 오기!
         //리얼타임 데이터베이스 읽기
         myRef2.addValueEventListener(object: ValueEventListener {
@@ -118,7 +118,7 @@ class consumptionDPCFragment : Fragment() {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })
-        var myRef3 = database.getReference("user").child(x).child("today")
+        var myRef3 = database.getReference("Users").child("users").child(x).child("today")
         //특정 데이터 값 갖고 오기!
         //리얼타임 데이터베이스 읽기
         myRef3.addValueEventListener(object: ValueEventListener {

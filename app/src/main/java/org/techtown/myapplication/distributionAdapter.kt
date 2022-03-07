@@ -15,7 +15,7 @@ class distributionAdapter (private val items: ArrayList<Data>): RecyclerView.Ada
     override fun onBindViewHolder(holder: distributionAdapter.ViewHolder, position: Int) {
 
         val item = items[position]
-        val listener= View.OnClickListener { it-> Toast.makeText(it.context, "Clicked:"+item.name, Toast.LENGTH_SHORT).show()
+        val listener= View.OnClickListener { it-> Toast.makeText(it.context, "Clicked:"+item.email, Toast.LENGTH_SHORT).show()
         }
         holder.apply {
             bind(listener, item)
@@ -42,7 +42,7 @@ class distributionAdapter (private val items: ArrayList<Data>): RecyclerView.Ada
         private var view: View =v
         fun bind(listener: View.OnClickListener, item:Data){
             //view.img1.setImageDrawable(item.img1)
-            view.txt1.text=item.name
+            view.txt1.text=item.email
             view.setOnClickListener(listener)
 
         }

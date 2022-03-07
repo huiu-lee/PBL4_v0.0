@@ -14,7 +14,7 @@ class Repo {
 
         val mutableData = MutableLiveData<MutableList<Data>>()
         val database = Firebase.database
-        val myRef = database.getReference("user")
+        val myRef = database.getReference("Users").child("users")
 
         myRef.addValueEventListener(object : ValueEventListener {
 
@@ -24,8 +24,10 @@ class Repo {
                 if (snapshot.exists()){
                     for (userSnapshot in snapshot.children){
                         val getData = userSnapshot.getValue(Data::class.java)
-                        listData.add(getData!!)
-                        mutableData.value = listData
+                        if (getData!!.measure == 0) {
+                            listData.add(getData!!)
+                            mutableData.value = listData
+                        }
                     }
                 }
             }

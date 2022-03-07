@@ -54,7 +54,7 @@ class ResAdapter (private val context: resourceFragment): RecyclerView.Adapter<R
 
     override fun onBindViewHolder(holder: ResAdapter.ViewHolder, position: Int) {
         val user : Data = userList[position]
-        holder.res_name.text = user.name
+        holder.res_name.text = user.email
         holder.res_mea.text = user.measure.toString()
     }
 

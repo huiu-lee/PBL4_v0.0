@@ -34,8 +34,8 @@ class consumptionDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_consumption_detail)
 
-        back = findViewById<ImageView>(R.id.back)
-        report = findViewById<ImageView>(R.id.reportBtn)
+        back = findViewById(R.id.back)
+        report = findViewById(R.id.reportBtn)
         d_name = findViewById(R.id.d_name)
 
         val tabLayout=findViewById<TabLayout>(R.id.tab_layout)

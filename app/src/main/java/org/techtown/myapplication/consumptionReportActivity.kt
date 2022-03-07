@@ -36,15 +36,15 @@ class consumptionReportActivity : AppCompatActivity() {
         //val db = Firebase.firestore
         var x = ""
 
-        if(name == "가구1"){
-            x = "user1"
+        if (name == "가구1"){
+            x = "-MwCVkmDQ7lbUpG05BRH"
         } else if (name == "가구2"){
-            x = "user2"
-        } else {
-            x = "user3"
+            x = "-MwCYBGzYzjVVbwU5yW_"
+        } else{
+            x = "-MwEUIbjtRA4j1wQjo_3"
         }
 
-        var myRef1 = database.getReference(x).child("monthreport")
+        var myRef1 = database.getReference("Users").child("users").child(x).child("monthreport")
 
         myRef1.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -55,7 +55,7 @@ class consumptionReportActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })
-        var myRef2 = database.getReference(x).child("dailyreport")
+        var myRef2 = database.getReference("Users").child("users").child(x).child("dailyreport")
 
         myRef2.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {

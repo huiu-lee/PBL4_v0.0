@@ -61,7 +61,7 @@ class consumptionFragment : Fragment() {
 
         var n = 0
 
-        var myRef1 = database.getReference("user1").child("measure")
+        var myRef1 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("measure")
         //특정 데이터 값 갖고 오기!
         //리얼타임 데이터베이스 읽기
         myRef1.addValueEventListener(object: ValueEventListener {
@@ -73,7 +73,7 @@ class consumptionFragment : Fragment() {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })
-        var myRef2 = database.getReference("user1").child("middle")
+        var myRef2 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("middle")
         //특정 데이터 값 갖고 오기!
         //리얼타임 데이터베이스 읽기
         myRef2.addValueEventListener(object: ValueEventListener {
@@ -95,7 +95,7 @@ class consumptionFragment : Fragment() {
                 0 -> {
                     main_month.text = "가구1"
 
-                    var myRef1 = database.getReference("user1").child("measure")
+                    var myRef1 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("measure")
                     //특정 데이터 값 갖고 오기!
                     myRef1.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -106,7 +106,7 @@ class consumptionFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
                     })
-                    var myRef2 = database.getReference("user1").child("middle")
+                    var myRef2 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("middle")
 
                     myRef2.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -121,7 +121,7 @@ class consumptionFragment : Fragment() {
                 1 -> {
                     main_month.text = "가구2"
 
-                    var myRef1 = database.getReference("user2").child("measure")
+                    var myRef1 = database.getReference("Users").child("users").child("-MwCYBGzYzjVVbwU5yW_").child("measure")
                     //특정 데이터 값 갖고 오기!
                     myRef1.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -132,7 +132,7 @@ class consumptionFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
                     })
-                    var myRef2 = database.getReference("user2").child("middle")
+                    var myRef2 = database.getReference("Users").child("users").child("-MwCYBGzYzjVVbwU5yW_").child("middle")
 
                     myRef2.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -148,7 +148,7 @@ class consumptionFragment : Fragment() {
                     main_month.text = "가구3"
 
                     //특정 데이터 값 갖고 오기!
-                    var myRef1 = database.getReference("user3").child("measure")
+                    var myRef1 = database.getReference("Users").child("users").child("-MwEUIbjtRA4j1wQjo_3").child("measure")
 
                     myRef1.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -159,7 +159,7 @@ class consumptionFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
                     })
-                    var myRef2 = database.getReference("user3").child("middle")
+                    var myRef2 = database.getReference("Users").child("users").child("-MwEUIbjtRA4j1wQjo_3").child("middle")
 
                     myRef2.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -184,7 +184,7 @@ class consumptionFragment : Fragment() {
                     main_month.text = "가구1"
 
                     //특정 데이터 값 갖고 오기!
-                    var myRef1 = database.getReference("user1").child("measure")
+                    var myRef1 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("measure")
 
                     myRef1.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -195,7 +195,7 @@ class consumptionFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
                     })
-                    var myRef2 = database.getReference("user1").child("middle")
+                    var myRef2 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("middle")
                     //특정 데이터 값 갖고 오기!
                     //리얼타임 데이터베이스 읽기
                     myRef2.addValueEventListener(object: ValueEventListener {
@@ -212,7 +212,7 @@ class consumptionFragment : Fragment() {
                     main_month.text = "가구2"
 
                     //특정 데이터 값 갖고 오기!
-                    var myRef1 = database.getReference("user2").child("measure")
+                    var myRef1 = database.getReference("Users").child("users").child("-MwCYBGzYzjVVbwU5yW_").child("measure")
                     myRef1.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
                             val value = datasnapshot?.value
@@ -222,7 +222,7 @@ class consumptionFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
                     })
-                    var myRef2 = database.getReference("user2").child("middle")
+                    var myRef2 = database.getReference("Users").child("users").child("-MwCYBGzYzjVVbwU5yW_").child("middle")
 
                     myRef2.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -238,7 +238,8 @@ class consumptionFragment : Fragment() {
                     main_month.text = "가구3"
 
                     //특정 데이터 값 갖고 오기!
-                    var myRef1 = database.getReference("user3").child("measure")
+                    var myRef1 = database.getReference("Users").child("users").child("-MwEUIbjtRA4j1wQjo_3").child("measure")
+
 
                     myRef1.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -249,7 +250,7 @@ class consumptionFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
                         }
                     })
-                    var myRef2 = database.getReference("user3").child("middle")
+                    var myRef2 = database.getReference("Users").child("users").child("-MwEUIbjtRA4j1wQjo_3").child("middle")
 
                     myRef2.addValueEventListener(object: ValueEventListener {
                         override fun onDataChange(datasnapshot: DataSnapshot) {
@@ -272,33 +273,32 @@ class consumptionFragment : Fragment() {
         }
 
         var x = 0
+        var a = ""
+        var b = ""
+
+        var list = java.util.ArrayList<User>()
 
         database2 = FirebaseDatabase.getInstance()
         databaseReference2 = database2.getReference("Users").child("users")
 
         databaseReference2.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                var list = java.util.ArrayList<User>()
-
-                val test : Map<String, String>? = dataSnapshot.getValue() as Map<String,String>?
-
                 for (postsnapshot in dataSnapshot.children) {
-
-
 
                     var value = postsnapshot.getValue<User>()
 
                     if (value!!.measure > 0) {
                         list.add(value!!)
-//                        hj.text = list[x].email.toString()
-
+                        a += list[x].measure.toString() + " "
+                        hj.text = list.size.toString()
                         x++
                     }
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+
+        //hj.text = list[1].measure.toString()
 
         return view
     }
