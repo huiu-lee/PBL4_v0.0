@@ -24,7 +24,8 @@ class notiAdapter(private val context: noticeActivity): RecyclerView.Adapter<not
 
                 var x = title.text.toString()
                 var y = content.text.toString()
-                var myExam = Exam(x,y)
+                var z = data.text.toString()
+                var myExam = Exam(x,y,z)
 
                 intent.putExtra("examKey", myExam)
                 view.context.startActivity(intent)
@@ -36,6 +37,7 @@ class notiAdapter(private val context: noticeActivity): RecyclerView.Adapter<not
         val noti : Data_noti = dataList[position]
         holder.title.text = noti.title
         holder.content.text = noti.content
+        holder.data.text = noti.date
     }
 
     override fun getItemCount(): Int {
@@ -45,5 +47,6 @@ class notiAdapter(private val context: noticeActivity): RecyclerView.Adapter<not
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val title : TextView = itemView.findViewById(R.id.title)
         val content : TextView = itemView.findViewById(R.id.content)
+        val data : TextView = itemView.findViewById(R.id.date)
     }
 }

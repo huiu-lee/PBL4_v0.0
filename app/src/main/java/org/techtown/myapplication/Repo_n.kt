@@ -24,7 +24,7 @@ class Repo_n {
                 if (snapshot.exists()){
                     for (userSnapshot in snapshot.children){
                         val getData = userSnapshot.getValue(Data_noti::class.java)
-                        listData.add(getData!!)
+                        listData.add(0,getData!!)
                         mutableData.value = listData
                     }
                 }

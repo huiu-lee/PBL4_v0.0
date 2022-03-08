@@ -21,11 +21,13 @@ class notice_detail_Activity : AppCompatActivity() {
 
         var d_title = findViewById<TextView>(R.id.d_title)
         var d_content = findViewById<TextView>(R.id.d_content)
+        var date = findViewById<TextView>(R.id.d_date)
 
         back_notice = findViewById(R.id.back_notice)
 
         var x = ""
         var y = ""
+        var z = ""
 
         if (intent.hasExtra("examKey")) {
             var exam = intent.getParcelableExtra<Exam>("examKey")
@@ -35,11 +37,13 @@ class notice_detail_Activity : AppCompatActivity() {
             if (exam != null) {
                 x = exam.title
                 y = exam.content
+                z = exam.date
             }
         }
 
         d_title.text = x
         d_content.text = y
+        date.text = z
 
         // 뒤로가기 버튼
         back_notice.setOnClickListener{
