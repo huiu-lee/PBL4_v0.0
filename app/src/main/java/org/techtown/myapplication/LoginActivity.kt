@@ -1,10 +1,8 @@
 package org.techtown.myapplication
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.TextView

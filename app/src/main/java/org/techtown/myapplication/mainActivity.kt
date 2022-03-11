@@ -25,13 +25,11 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         transaction.replace(R.id.frameLayout, homeFragment())
         transaction.commit()
 
-        // 툴바 사용
+        // 커스텀 툴바 사용
         toolbar_text = findViewById(R.id.toolbar_text)
         setSupportActionBar(findViewById(R.id.toolBar))
 
-
         supportActionBar!!.setDisplayShowTitleEnabled(false) // 툴바에 SDT 제목 보이기
-//        supportActionBar!!.setTitle("ss")
 
         // 하단바 사용
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -50,16 +48,11 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 //
 //            }
         }
-
         return super.onOptionsItemSelected(item)
     }
-
-    
     
     // 하단바 페이지 바꾸기
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var title : String = ""
-
         when(item.itemId) {
 
             R.id.action_home -> {

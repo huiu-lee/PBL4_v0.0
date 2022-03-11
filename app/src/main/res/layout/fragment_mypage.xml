@@ -134,9 +134,20 @@
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
+            android:layout_marginTop="135dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
             android:layout_marginTop="65dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
@@ -144,7 +155,7 @@
             android:id="@+id/divider2"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="70dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -156,18 +167,18 @@
             android:layout_width="32dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/bullhorn"
+            android:layout_marginTop="88dp"
+            android:src="@drawable/bull_go"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
         <ImageView
-            android:id="@+id/btn_n2"
+            android:id="@+id/imageView18"
             android:layout_width="32dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/bullhorn"
+            android:src="@drawable/nickname"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
@@ -177,12 +188,12 @@
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/file"
+            android:src="@drawable/history"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
-            android:id="@+id/btn_n1"
+            android:id="@+id/btn_n"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -191,6 +202,17 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView15"
             app:layout_constraintStart_toEndOf="@+id/imageView15" />
+
+        <TextView
+            android:id="@+id/btn_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="20dp"
+            android:text="닉네임 변경"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
         <TextView
             android:id="@+id/textView13"
@@ -209,7 +231,17 @@
             android:layout_marginEnd="16dp"
             android:src="@drawable/mypage_narrow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_n1" />
+            app:layout_constraintTop_toTopOf="@+id/btn_n" />
+
+        <ImageView
+            android:id="@+id/btn_n2"
+            android:layout_width="23dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/mypage_narrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
         <ImageView
             android:id="@+id/imageView19"
@@ -219,16 +251,6 @@
             android:src="@drawable/mypage_narrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView13" />
-
-        <TextView
-            android:id="@+id/nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="104dp"
-            android:text="닉네임 변경"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

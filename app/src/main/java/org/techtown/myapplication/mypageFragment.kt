@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import com.example.main.MySharedPreferences
 import com.google.firebase.database.*
@@ -29,6 +26,7 @@ class mypageFragment : Fragment() {
     lateinit var btn_n1 : TextView
     lateinit var btn_n2 : ImageView
     lateinit var btn_n3 : ImageView
+    lateinit var btn_nick : TextView
 
     lateinit var database : FirebaseDatabase
     lateinit var databaseReference: DatabaseReference
@@ -40,9 +38,10 @@ class mypageFragment : Fragment() {
         logout_btn = view.findViewById(R.id.logout_btn)
         name = view.findViewById(R.id.name)
 
-        btn_n1 = view.findViewById(R.id.btn_n1)
+        btn_n1 = view.findViewById(R.id.btn_n)
         btn_n2 = view.findViewById(R.id.btn_n2)
         btn_n3 = view.findViewById(R.id.btn_n3)
+        btn_nick = view.findViewById(R.id.btn_nick)
 
         var x = MySharedPreferences.getUserPass(view.context)
 
@@ -72,7 +71,31 @@ class mypageFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        name.text = MySharedPreferences.getUserId(view.context)
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postsnapshot in dataSnapshot.children) {
+
+                    var value = postsnapshot.getValue<User>()
+
+                    if (value!!.password == x) {
+
+                        var myRef2 = database.getReference("Users").child("users").child(value.id).child("nickname")
+                        myRef2.addValueEventListener(object: ValueEventListener {
+                            override fun onDataChange(datasnapshot: DataSnapshot) {
+                                val value = datasnapshot?.value
+                                name.text = value.toString()
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                            }
+                        })
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        //name.text = MySharedPreferences.getUserId(view.context)
 
         logout_btn.setOnClickListener{
             // fragment에서 SharedPreferences 사용시 선언
@@ -98,16 +121,70 @@ class mypageFragment : Fragment() {
             var intent = Intent(view.context, noticeActivity::class.java)
             startActivity(intent)
         }
-        btn_n2.setOnClickListener {
-            var intent = Intent(view.context, noticeActivity::class.java)
-            startActivity(intent)
-        }
+
         btn_n3.setOnClickListener {
             var intent = Intent(view.context, noticeActivity::class.java)
             startActivity(intent)
         }
 
+        btn_nick.setOnClickListener {
+            var intent = Intent(view.context, nickname_modify_activity::class.java)
+            startActivity(intent)
+        }
+        btn_n2.setOnClickListener {
+            var intent = Intent(view.context, nickname_modify_activity::class.java)
+            startActivity(intent)
+        }
+
+        /*nickname.setOnClickListener {
+
+            var builder = AlertDialog.Builder(view.context)
+            // xml파일로 커스텀 다이얼로그 디자인을 보여줄때
+            var v1 = layoutInflater.inflate(R.layout.nickname_dialog, null)
+
+            builder.create()
+            var test = builder.create()
+
+            var nicknameEdit = v1.findViewById<EditText>(R.id.safeEdit)
+            var nicknameYes = v1.findViewById<TextView>(R.id.safeYes)
+            var backbb = v1.findViewById<Button>(R.id.backbb)
+
+            builder.setView(v1)
+            builder.show()
+
+            backbb.setOnClickListener {
+                builder.create().dismiss()
+            }
+
+            nicknameYes.setOnClickListener {
+                var nickname = nicknameEdit.text.toString().trim()
+
+                database = FirebaseDatabase.getInstance()
+                databaseReference = database.getReference("Users").child("users")
+                databaseReference.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (postsnapshot in dataSnapshot.children) {
+
+                            var value = postsnapshot.getValue<User>()
+
+                            if (value!!.password == x) {
+                                var myRef1 =
+                                    database.getReference("Users").child("users").child(value.id)
+                                        .child("nickname")
+                                myRef1.setValue(nickname)
+                                Toast.makeText(view.context, "닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+                builder.create().dismiss()
+            }
+        }*/
         return view
     }
+
+
 }
 

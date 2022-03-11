@@ -11,13 +11,15 @@ class User() {
     lateinit var id : String
     var measure by Delegates.notNull<Int>()
     var point by Delegates.notNull<Int>()
+    lateinit var nickname : String
 
-    constructor(email : String, password : String, safeNum : String, id : String, measure : Int, point : Int) : this() {
+    constructor(email : String, password : String, safeNum : String, id : String, measure : Int, point : Int, nickname : String) : this() {
         this.email = email
         this.password = password
         this.safeNum = safeNum
         this.id = id
         this.measure = measure
         this.point = point
+        this.nickname = nickname
     }
 }
