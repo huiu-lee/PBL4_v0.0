@@ -59,7 +59,7 @@ class mypageFragment : Fragment() {
                         myRef1.addValueEventListener(object: ValueEventListener {
                             override fun onDataChange(datasnapshot: DataSnapshot) {
                                 val value = datasnapshot?.value
-                                point.text = value.toString()
+//                                point.text = value.toString()
                             }
                             override fun onCancelled(error: DatabaseError) {
                                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
