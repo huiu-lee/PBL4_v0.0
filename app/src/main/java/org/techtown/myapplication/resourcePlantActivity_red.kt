@@ -5,16 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_resource_plant.*
 
 class resourcePlantActivity_red : AppCompatActivity() {
 
-    val database = Firebase.database
+    lateinit var database : FirebaseDatabase
+    lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,26 +26,31 @@ class resourcePlantActivity_red : AppCompatActivity() {
         var name = intent.getStringExtra("name")
 
         plant_name.text = name
-        var x = "0"
 
-        if(name == "가구1"){
-            x = "1"
-        } else if (name == "가구2"){
-            x = "2"
-        } else {
-            x = "3"
-        }
+        database = FirebaseDatabase.getInstance()
+        databaseReference = database.getReference("Users").child("users")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postsnapshot in dataSnapshot.children) {
 
-        var myRef1 = database.getReference("user").child(x).child("measure")
+                    var value = postsnapshot.getValue<User>()
 
-        myRef1.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(datasnapshot: DataSnapshot) {
-                val value = datasnapshot?.value
-                plant_measure.text = value.toString()
+                    if (value!!.nickname == name) {
+
+                        var myRef1 = database.getReference("Users").child("users").child(value.id).child("produce")
+                        myRef1.addValueEventListener(object: ValueEventListener {
+                            override fun onDataChange(datasnapshot: DataSnapshot) {
+                                val value = datasnapshot?.value
+                                plant_measure.text = value.toString()
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+                            }
+                        })
+                    }
+                }
             }
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
 
 

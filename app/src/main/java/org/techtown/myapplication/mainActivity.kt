@@ -1,17 +1,26 @@
 package org.techtown.myapplication
 
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.ListFragment
+import com.example.main.MySharedPreferences
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
 
 // 메인 화면
 class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
+    lateinit var database : FirebaseDatabase
+    lateinit var databaseReference: DatabaseReference
 
     lateinit var toolbar_text : TextView
 
@@ -24,6 +33,8 @@ class mainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frameLayout, homeFragment())
         transaction.commit()
+
+        var point = findViewById<TextView>(R.id.point)
 
         // 커스텀 툴바 사용
         toolbar_text = findViewById(R.id.toolbar_text)
