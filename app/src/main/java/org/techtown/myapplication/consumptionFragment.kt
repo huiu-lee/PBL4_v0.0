@@ -26,9 +26,6 @@ class consumptionFragment : Fragment() {
     lateinit var database2 : FirebaseDatabase
     lateinit var databaseReference2: DatabaseReference
 
-    private var _binding: FragmentConsumptionMainBinding? = null
-    private val binding get() = _binding!!
-
     lateinit var btn_back: ImageView
     lateinit var btn_forward: ImageView
 
@@ -52,6 +49,7 @@ class consumptionFragment : Fragment() {
         main_month = view.findViewById(R.id.main_month)
 
         hj = view.findViewById(R.id.hj)
+        var w_t = view.findViewById<TextView>(R.id.w_t)
 
         //getSupportActionBar().setTitle(" what you want")
         //activity()
@@ -269,6 +267,11 @@ class consumptionFragment : Fragment() {
 
             var intent = Intent(view.context, consumptionDetailActivity::class.java)
             intent.putExtra("name", main_name)
+            startActivity(intent)
+        }
+
+        w_t.setOnClickListener {
+            var intent = Intent(view.context, weather_Test::class.java)
             startActivity(intent)
         }
 

@@ -39,6 +39,9 @@ android {
 }
 
 dependencies {
+    //API 활용
+    implementation 'com.squareup.retrofit2:retrofit:2.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
 
     def lifecycle_version = "2.3.1"
     // ViewModel
