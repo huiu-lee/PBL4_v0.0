@@ -102,6 +102,8 @@ class MainHead_FirstFragment : Fragment(){
                 response: retrofit2.Response<WEATHER>
             ) {
                 if (response.isSuccessful) {
+                    var degree = view?.findViewById<TextView>(R.id.degrees)
+
                     // 날씨 정보 가져오기
                     val it: List<ITEM> = response.body()!!.response.body.items.item
 
@@ -126,7 +128,9 @@ class MainHead_FirstFragment : Fragment(){
                     // 각 날짜 배열 시간 설정
                     for (i in 0..5) weatherArr[i].fcstTime = it[i].fcstTime
 
-                    degrees.text = weatherArr[0].temp
+                    if (degree != null) {
+                        degree.text = weatherArr[0].temp
+                    }
 
                     getRainType(weatherArr[0].rainType, weatherArr[0].sky)
 
