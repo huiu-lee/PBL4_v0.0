@@ -10,13 +10,14 @@ interface WeatherInterface {
     // getUltraSrtFcst : 초단기 예보 조회 + 인증키
     @GET("getUltraSrtFcst?serviceKey=N4E7Om1Q%2BZfsXn5KbolmQMkKGMtW6NKltMv%2FtBhClqRm%2FU6UMiSeIamXBI9aD6GNs%2FGQRR6Maxah3UfAcw16%2BQ%3D%3D")
 
-    fun GetWeather(@Query("numOfRows") num_of_rows : Int,   // 한 페이지 경과 수
-                   @Query("pageNo") page_no : Int,          // 페이지 번호
-                   @Query("dataType") data_type : String,   // 응답 자료 형식
-                   @Query("base_date") base_date : String,  // 발표 일자
-                   @Query("base_time") base_time : String,  // 발표 시각
-                   @Query("nx") nx : String,                // 예보지점 X 좌표
-                   @Query("ny") ny : String)                // 예보지점 Y 좌표
+    fun GetWeather(@Query("numOfRows") num_of_rows: Int,   // 한 페이지 경과 수
+                   @Query("pageNo") page_no: Int,          // 페이지 번호
+                   @Query("dataType") data_type: String,   // 응답 자료 형식
+                   @Query("base_date") base_date: String,  // 발표 일자
+                   @Query("base_time") base_time: String,  // 발표 시각
+                   @Query("nx") nx: Int,                // 예보지점 X 좌표
+                   @Query("ny") ny: Int
+    )                // 예보지점 Y 좌표
             : Call<WEATHER>
 }
 
