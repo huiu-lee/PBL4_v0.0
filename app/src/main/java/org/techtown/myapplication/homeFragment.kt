@@ -18,10 +18,6 @@ import androidx.appcompat.content.res.AppCompatResources.getDrawable
 
 class homeFragment : Fragment() {
 
-    // xml 요소들
-//    var mainActivity: mainActivity? = null
-    lateinit var main_dateTv: TextView
-
     // 동작 코드
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +25,6 @@ class homeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var view = LayoutInflater.from(activity).inflate(R.layout.fragment_home, container, false)
-        main_dateTv = view.findViewById(R.id.main_dateTv)
 
         // fragment_main의 view에서 요소찾기, findViewById
         // 1. head viewpager 어댑터
@@ -69,22 +64,6 @@ class homeFragment : Fragment() {
                 indicator0_iv_main.setImageDrawable(getDrawable(view.context, R.drawable.shape_circle_gray))
                 indicator1_iv_main.setImageDrawable(getDrawable(view.context, R.drawable.shape_circle_gray))
                 indicator2_iv_main.setImageDrawable(getDrawable(view.context, R.drawable.shape_circle_gray))
-
-                when (p0_head) {
-                    0 -> {
-                        indicator0_iv_main.setImageDrawable(getDrawable(view.context, R.drawable.shape_circle_white))
-                        main_dateTv.visibility = View.VISIBLE
-                    }
-                    1 -> {
-                        indicator1_iv_main.setImageDrawable(getDrawable(view.context, R.drawable.shape_circle_white))
-                        main_dateTv.visibility = View.GONE
-                    }
-                    2 -> {
-                        indicator2_iv_main.setImageDrawable(getDrawable(view.context, R.drawable.shape_circle_white))
-                        main_dateTv.visibility = View.GONE
-                    }
-
-                }
             }
         })
 
@@ -114,26 +93,6 @@ class homeFragment : Fragment() {
                 }
             }
         })
-
-//         date 표현
-//         dependencies 한 줄 추가해줘야 함
-        val timeDate: String
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val date = LocalDateTime.now()
-            val dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd")
-            val nowString = date.format(dtf)
-            timeDate = nowString
-        } else {
-            val date = org.joda.time.LocalDateTime.now()
-            val dtf = DateTimeFormat.forPattern("yyyy.MM.dd")
-            val jodaTime = dtf.parseDateTime(date.toString())
-            val nowString = DateTimeFormat.forPattern("yyyy.MM.dd").print(jodaTime)
-            timeDate = nowString
-        }
-
-        // 날짜 텍스트 데이터 셋팅
-        main_dateTv.setText(timeDate)
-
 
         return view
     }

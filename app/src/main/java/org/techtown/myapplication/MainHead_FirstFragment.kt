@@ -1,6 +1,7 @@
 package org.techtown.myapplication
 
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.LocationCallback
@@ -15,9 +17,12 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.fragment_first_mainhead.*
+import org.joda.time.format.DateTimeFormat
 import org.techtown.myapplication.databinding.FragmentFirstMainheadBinding
 import retrofit2.Call
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainHead_FirstFragment : Fragment(){
@@ -29,7 +34,7 @@ class MainHead_FirstFragment : Fragment(){
     private var base_date = "20220311"  // 발표 일자
     private var base_time = "1400"      // 발표 시각
 
-
+    lateinit var weather_icon : ImageView
 
 //    private var nx = "55"               // 예보지점 X 좌표
 //    private var ny = "127"              // 예보지점 Y 좌표
@@ -39,17 +44,32 @@ class MainHead_FirstFragment : Fragment(){
     private var _binding : FragmentFirstMainheadBinding? = null
     private val binding get() = _binding!!
 
-    //var degrees = binding.root.findViewById<TextView>(R.id.degrees)
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_first_mainhead, container, false)
 
         var degrees = view.findViewById<TextView>(R.id.degrees)
+        var main_dateTv2 = view.findViewById<TextView>(R.id.main_dateTv2)
+        weather_icon =view.findViewById(R.id.weather_icon)
 
         // 내 위치 위경도 가져와서 날씨 정보 설정하기
         requestLocation(view)
 
-        //degrees.text = ""
+        val timeDate: String
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val date = LocalDateTime.now()
+            val dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+            val nowString = date.format(dtf)
+            timeDate = nowString
+        } else {
+            val date = org.joda.time.LocalDateTime.now()
+            val dtf = DateTimeFormat.forPattern("yyyy.MM.dd")
+            val jodaTime = dtf.parseDateTime(date.toString())
+            val nowString = DateTimeFormat.forPattern("yyyy.MM.dd").print(jodaTime)
+            timeDate = nowString
+        }
+
+        // 날짜 텍스트 데이터 셋팅
+        main_dateTv2.text = timeDate
 
         return view
     }
@@ -108,6 +128,8 @@ class MainHead_FirstFragment : Fragment(){
 
                     degrees.text = weatherArr[0].temp
 
+                    getRainType(weatherArr[0].rainType, weatherArr[0].sky)
+
                     Log.d("api tem", weatherArr[0].temp)
                 }
             }
@@ -162,4 +184,22 @@ class MainHead_FirstFragment : Fragment(){
         }
     }
 
+    // 하늘 형태
+    fun getRainType(rainType : String, skyType : String) {
+
+        when (rainType) {
+            "0" -> {
+                when (skyType) {
+                    "1" -> weather_icon.setImageResource(R.drawable.sun)
+                    "3" -> weather_icon.setImageResource(R.drawable.cloud_little)
+                    "4" -> weather_icon.setImageResource(R.drawable.cloud)
+                    else -> "오류 rainType : " + skyType
+                }
+            }
+            "1" -> weather_icon.setImageResource(R.drawable.rain)
+            "2" -> weather_icon.setImageResource(R.drawable.rainandsnow)
+            "3" -> weather_icon.setImageResource(R.drawable.snow)
+            else -> "오류 rainType : "+rainType
+        }
+    }
 }
