@@ -35,9 +35,7 @@ class MainHead_FirstFragment : Fragment(){
     private var base_time = "1400"      // 발표 시각
 
     lateinit var weather_icon : ImageView
-
-//    private var nx = "55"               // 예보지점 X 좌표
-//    private var ny = "127"              // 예보지점 Y 좌표
+    lateinit var location : TextView
 
     private var curPoint : Point? = null    // 현재 위치의 격자 좌표를 저장할 포인트
 
@@ -50,6 +48,7 @@ class MainHead_FirstFragment : Fragment(){
         var degrees = view.findViewById<TextView>(R.id.degrees)
         var main_dateTv2 = view.findViewById<TextView>(R.id.main_dateTv2)
         weather_icon =view.findViewById(R.id.weather_icon)
+        location = view.findViewById(R.id.location)
 
         // 내 위치 위경도 가져와서 날씨 정보 설정하기
         requestLocation(view)
@@ -173,6 +172,9 @@ class MainHead_FirstFragment : Fragment(){
 
                             Log.d("api fail2", curPoint.toString())
 
+                            //location 지정해주기
+                            getLocation(curPoint!!.x , curPoint!!.y)
+
                             // nx, ny지점의 날씨 가져와서 설정하기
                             setWeather(curPoint!!.x, curPoint!!.y)
 
@@ -194,16 +196,59 @@ class MainHead_FirstFragment : Fragment(){
         when (rainType) {
             "0" -> {
                 when (skyType) {
-                    "1" -> weather_icon.setImageResource(R.drawable.sun)
-                    "3" -> weather_icon.setImageResource(R.drawable.cloud_little)
-                    "4" -> weather_icon.setImageResource(R.drawable.cloud)
+                    "1" -> weather_icon.setImageResource(R.drawable.sun)  //맑음
+                    "3" -> weather_icon.setImageResource(R.drawable.cloud_little)  //조금 흐림
+                    "4" -> weather_icon.setImageResource(R.drawable.cloud_many)  //흐림
                     else -> "오류 rainType : " + skyType
                 }
             }
-            "1" -> weather_icon.setImageResource(R.drawable.rain)
-            "2" -> weather_icon.setImageResource(R.drawable.rainandsnow)
-            "3" -> weather_icon.setImageResource(R.drawable.snow)
+            "1" -> weather_icon.setImageResource(R.drawable.rain) //비
+            "2" -> weather_icon.setImageResource(R.drawable.rainandsnow)  //비 or 눈
+            "3" -> weather_icon.setImageResource(R.drawable.snow)  //눈
             else -> "오류 rainType : "+rainType
+        }
+    }
+
+    // 하늘 형태
+    fun getLocation(x : Int, y : Int) {
+
+        if ( x in 48..60 && y in 32..48){
+            location.text = "제주"
+        }
+        else if (x in 70..101 && y in 118..147){
+            location.text = "강원"
+        }
+        else if (x in 63..67 && y in 103..108){
+            location.text = "세종"
+        }
+        else if (x in 98..104 && y in 83..86){
+            location.text = "울산"
+        }
+        else if (x in 66..69 && y in 99..103){
+            location.text = "대전"
+        }
+        else if (x in 57..60 && y in 73..76){
+            location.text = "광주"
+        }
+        else if (x in 21..56 && y in 123..129){
+            location.text = "인천"
+        }
+        else if (x in 86..91 && y in 86..92){
+            location.text = "대구"
+        }
+        else if (x in 97..101 && y in 73..79){
+            location.text = "부산"
+        }
+        else if (x in 53..73 && y in 114..140){
+            if (x in 57..63 && y in 124..129){
+                location.text = "서울"
+            }
+            else{
+                location.text = "경기"
+            }
+        }
+        else{
+            location.text = "  "
         }
     }
 }

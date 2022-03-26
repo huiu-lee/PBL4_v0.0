@@ -46,7 +46,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toStartOf="@+id/location"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         tools:ignore="MissingConstraints" />
@@ -118,7 +118,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:gravity="top"
-        android:text="서울"
+        android:text="  "
         android:textColor="@color/white"
         android:textSize="16dp"
         android:textStyle="bold"
