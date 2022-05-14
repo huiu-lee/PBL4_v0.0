@@ -25,11 +25,22 @@ class MainMiddle_FirstFragment : Fragment(){
         var prediction_plant1 = view.findViewById<TextView>(R.id.home_name)
 
         var myRef1 = database.getReference("user").child("1").child("name")
+        var myRef2 = database.getReference("ina219_D").child("busvoltage")
 
         myRef1.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val value = datasnapshot.getValue<String>()
                 prediction_plant1.text = value
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+        myRef2.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value = datasnapshot?.value
+                prediction_plant1.text = value.toString() + "W"
             }
             override fun onCancelled(error: DatabaseError) {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())

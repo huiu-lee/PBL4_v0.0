@@ -21,16 +21,15 @@
         android:title="@string/trade" />
 
     <item
-        android:id="@+id/action_distribution"
-        android:enabled="true"
-        android:icon="@drawable/ic_distribution"
-        android:title="@string/distribution"
-        />
-
-    <item
         android:id="@+id/action_resource_management"
         android:enabled="true"
         android:icon="@drawable/ic_resource_management"
         android:title="@string/resource_management"
+        />
+    <item
+        android:id="@+id/action_distribution"
+        android:enabled="true"
+        android:icon="@drawable/nav_my"
+        android:title="Mypage"
         />
 </menu>

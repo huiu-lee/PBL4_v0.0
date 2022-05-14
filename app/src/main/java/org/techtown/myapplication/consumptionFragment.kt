@@ -34,8 +34,6 @@ class consumptionFragment : Fragment() {
 
     lateinit var main_month: TextView
 
-    lateinit var hj : TextView
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_consumption_main, container, false)
@@ -48,15 +46,9 @@ class consumptionFragment : Fragment() {
 
         main_month = view.findViewById(R.id.main_month)
 
-        hj = view.findViewById(R.id.hj)
         var w_t = view.findViewById<TextView>(R.id.w_t)
 
-        //getSupportActionBar().setTitle(" what you want")
-        //activity()
-
         // 툴바 사용
-
-
         var n = 0
 
         var myRef1 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("measure")
@@ -269,11 +261,11 @@ class consumptionFragment : Fragment() {
             intent.putExtra("name", main_name)
             startActivity(intent)
         }
-
-        w_t.setOnClickListener {
-            var intent = Intent(view.context, weather_Test::class.java)
-            startActivity(intent)
-        }
+//
+//        w_t.setOnClickListener {
+//            var intent = Intent(view.context, weather_Test::class.java)
+//            startActivity(intent)
+//        }
 
         var x = 0
         var a = ""
@@ -293,15 +285,13 @@ class consumptionFragment : Fragment() {
                     if (value!!.measure > 0) {
                         list.add(value!!)
                         a += list[x].measure.toString() + " "
-                        hj.text = list.size.toString()
+                        //hj.text = list.size.toString()
                         x++
                     }
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
         })
-
-        //hj.text = list[1].measure.toString()
 
         return view
     }
