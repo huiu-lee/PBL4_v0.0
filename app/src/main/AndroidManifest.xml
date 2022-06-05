@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -18,7 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".BuyerlistActivity_third"
+            android:exported="true" />
+        <activity
+            android:name=".BuyerlistActivity_second"
+            android:exported="true" />
         <activity
             android:name=".Splash"
             android:theme="@style/SplashTheme">
@@ -28,8 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".weather_Test"></activity>
+        <activity android:name=".weather_Test" />
         <activity android:name=".nickname_modify_activity" />
         <activity android:name=".notice_detail_Activity" />
         <activity android:name=".noticeActivity" />
@@ -39,8 +42,7 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity android:name=".resourcePlantActivity_red" />
         <activity android:name=".distributionNextpgActivity" />
         <activity

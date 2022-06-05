@@ -41,5 +41,10 @@
 
     <string name="appName">어플이름</string>
 
+    <!-- 누구에게 거래 spin -->
+    <string-array name="send_group">
+        <item>그룹</item>
+    </string-array>
+
 
 </resources>
