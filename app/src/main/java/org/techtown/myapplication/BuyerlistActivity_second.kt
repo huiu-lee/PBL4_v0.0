@@ -125,8 +125,8 @@ class BuyerlistActivity_second : AppCompatActivity() {
 //        // intent로 다른 엑티비티로 변수 넘기기 가능
 //        intent.putExtra("howmuchSell", howmuchEdit)
 //        startActivity(intent)
-//
-//        //updateData(howmuchEdit)
-//
-//    }
+
+        //updateData(howmuchEdit)
+
+    //}
 }

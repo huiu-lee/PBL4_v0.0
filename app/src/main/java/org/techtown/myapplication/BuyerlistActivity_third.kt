@@ -14,6 +14,7 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_buyerlist_second.*
 import kotlinx.android.synthetic.main.activity_buyerlist_third.*
+import kotlinx.android.synthetic.main.activity_trade_process.*
 import org.techtown.myapplication.databinding.ActivityBuyerlistThirdBinding
 import java.util.regex.Pattern
 
@@ -33,6 +34,14 @@ class BuyerlistActivity_third : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buyerlist_third)
+
+        bottomNav_nxt.setOnClickListener{
+
+            var intent = Intent(this, mainActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
         databaseReference = database.getReference("Users").child("users")
 

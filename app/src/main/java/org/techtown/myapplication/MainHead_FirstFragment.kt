@@ -1,4 +1,4 @@
-package org.techtown.myapplication
+/*package org.techtown.myapplication
 
 import android.graphics.Point
 import android.os.Build
@@ -144,7 +144,11 @@ class MainHead_FirstFragment : Fragment(){
                 tvError.visibility = View.VISIBLE
                 Log.d("api fail", t.message.toString())
             }
+
+
         })
+
+
     }
 
 
@@ -252,3 +256,5 @@ class MainHead_FirstFragment : Fragment(){
         }
     }
 }
+
+ */

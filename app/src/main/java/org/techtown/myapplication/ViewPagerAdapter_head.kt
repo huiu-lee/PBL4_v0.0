@@ -11,7 +11,7 @@ class ViewPagerAdapter_head(fm: FragmentManager) : FragmentStatePagerAdapter(fm)
 
         return when(position) {
 
-            0       ->  MainHead_FirstFragment()
+          //  0       ->  MainHead_FirstFragment()
 
             1       ->  MainHead_SecondFragment()
 

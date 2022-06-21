@@ -52,23 +52,6 @@
         tools:ignore="MissingConstraints" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sellerlist_3rd"
-        android:layout_width="412dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav_nxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/seller_item"
-        tools:ignore="DuplicateIds" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/howmuchSell"
         android:layout_width="412dp"
@@ -233,6 +216,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.431" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sellerlist_3rd"
+            android:layout_width="412dp"
+            android:layout_height="124dp"
+            android:background="@color/gray"
+            tools:ignore="DuplicateIds"
+            tools:listitem="@layout/seller_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

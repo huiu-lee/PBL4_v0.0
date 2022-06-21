@@ -4,40 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_adduser.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_buyerlist.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_buyerlist_second.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_buyerlist_third.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_consumption_detail.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_consumption_report.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_distribution_nextpg.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_distribution_share.xml" value="0.24564102564102563" />
         <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_login.xml" value="0.23489583333333333" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_nickname_modify.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_notice.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_notice_detail.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_resource_plant.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/activity_trade_process.xml" value="0.24564102564102563" />
         <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_consumption_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_consumption_mpc.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_distribution.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_first_mainhead.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_first_mainmiddle.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_mypage.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_resource.xml" value="0.175" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_second_mainhead.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_third_mainmiddle.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/fragment_trade_main.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/item.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/item_notice.xml" value="0.24564102564102563" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/item_r.xml" value="0.24564102564102563" />
         <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/safe_dialog.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/seller_item.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/layout/seller_item_second.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/menu/activity_main_drawer.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/menu/menu_bottomnavigationview.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/menu/menu_toolbar.xml" value="0.24947916666666667" />
-        <entry key="..\:/PBL4_v0.0/app/src/main/res/menu/ok_bottomnavigationview.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable/ic_consumption.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/drawable/ic_hambuger.xml" value="0.36614583333333334" />
@@ -82,10 +51,15 @@
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/layout/fragment_trade_main.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/menu/bottomnav.xml" value="0.21203703703703702" />
         <entry key="..\:/Users/LEEYOONHEE/AndroidStudioProjects/PBL4_v0.0/app/src/main/res/menu/menu_bottomnavigationview.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/PBL4/app/src/main/res/layout/activity_buyerlist_second.xml" value="0.12" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/PBL4/app/src/main/res/layout/activity_buyerlist_third.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/PBL4/app/src/main/res/layout/activity_trade_process.xml" value="0.13451086956521738" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/PBL4/app/src/main/res/layout/activity_trade_process2.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/PBL4/app/src/main/res/layout/fragment_trade_main.xml" value="0.13451086956521738" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

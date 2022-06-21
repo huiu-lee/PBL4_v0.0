@@ -42,149 +42,44 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dateSetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:gravity="right"
+                android:background="#00FF0000"
+                android:text="날짜"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/trade_totalLayout"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="250dp"
             android:layout_margin="20dp"
-            android:background="@drawable/style_roundcorner"
+            android:background="@drawable/excludedge"
             android:elevation="10dp"
-            android:gravity="center_vertical"
+
+            android:gravity=""
             android:orientation="horizontal"
             android:padding="35px"
             android:weightSum="1"
-            app:layout_constraintBottom_toTopOf="@id/trade_buttonLayout"
+            android:layout_marginTop="100dp"
+
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/trade_titleLayout">
 
             <!--app:layout_constraintBottom_toTopOf="" -->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:text="@string/today_total_trade"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tradeTotalTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="00"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="@string/Wh"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-
-        <!-- 발전소 정보 -->
-        <LinearLayout
-            android:id="@+id/trade_buttonLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/trade_viewLayout"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/trade_totalLayout">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/powerplantTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/powerplant"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/powerplantNumTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="00"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/pointBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/style_roundcorner"
-                    android:backgroundTint="@color/main_green_160"
-                    android:textColor="@color/white"
-                    android:text="0000 point"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/saleBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/style_roundcorner"
-                    android:backgroundTint="@color/main_green_90"
-                    android:text="전력 판매"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <!-- 예측량 + 발전량 + 오차량 + 오늘 예측 수익 -->
-        <LinearLayout
-            android:id="@+id/trade_viewLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/style_roundcorner"
-            android:elevation="20dp"
-            android:orientation="vertical"
-            android:padding="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/trade_buttonLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="120dp">
-
-
-            <!-- 예측량 + 발전량 + 오차량 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -308,9 +203,124 @@
                             android:textSize="60sp"
                             android:textStyle="bold" />
 
+
+
                     </LinearLayout>
+
                 </LinearLayout>
+
+
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="180dp"
+                android:layout_marginLeft="-340dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="오늘의 추정 수익 : 1KW 당 "
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tradeTotalTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="0000"
+
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="원"
+
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <!-- 발전소 정보 -->
+        <LinearLayout
+            android:id="@+id/trade_buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/trade_viewLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trade_totalLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/pointBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_trade_btn"
+                    android:backgroundTint="@color/main_green_90"
+                    android:textColor="@color/white"
+                    android:text="내역 조회"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saleBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_trade_btn"
+                    android:backgroundTint="@color/main_green_90"
+                    android:layout_marginTop="10dp"
+                    android:text="전력 판매"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- 예측량 + 발전량 + 오차량 + 오늘 예측 수익 -->
+        <LinearLayout
+            android:id="@+id/trade_viewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trade_buttonLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="120dp">
 
 
             <!-- 오늘 예측 수익 -->
@@ -318,15 +328,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
-                android:gravity="center"
+
+                android:layout_marginBottom="30dp"
+                android:gravity="right"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="오늘의 추정 수익 : kw 당 "
+                    android:text="오늘의 발전량 "
                     android:textSize="20sp"
                     android:textStyle="bold" />
 

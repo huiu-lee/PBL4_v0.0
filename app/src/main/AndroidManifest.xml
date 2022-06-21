@@ -19,20 +19,22 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".BuyerlistActivity_third"
-            android:exported="true" />
-        <activity
-            android:name=".BuyerlistActivity_second"
-            android:exported="true" />
+            android:exported="true" >
+
+
+        </activity>
+        <activity android:name=".BuyerlistActivity_second">
+
+
+        </activity>
+
+
         <activity
             android:name=".Splash"
             android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".weather_Test" />
+
         <activity android:name=".nickname_modify_activity" />
         <activity android:name=".notice_detail_Activity" />
         <activity android:name=".noticeActivity" />
@@ -42,7 +44,13 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".resourcePlantActivity_red" />
         <activity android:name=".distributionNextpgActivity" />
         <activity
@@ -53,11 +61,7 @@
             android:exported="false" />
         <activity android:name=".tradeProcessActivity" />
         <activity android:name=".mainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".resourcePlantActivity"

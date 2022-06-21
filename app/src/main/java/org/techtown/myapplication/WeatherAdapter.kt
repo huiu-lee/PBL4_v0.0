@@ -1,4 +1,4 @@
-package org.techtown.myapplication
+/*package org.techtown.myapplication
 
 import android.view.LayoutInflater
 import android.view.View
@@ -76,3 +76,5 @@ class WeatherAdapter (var items : Array<ModelWeather>) : RecyclerView.Adapter<We
         }
     }
 }
+
+ */
