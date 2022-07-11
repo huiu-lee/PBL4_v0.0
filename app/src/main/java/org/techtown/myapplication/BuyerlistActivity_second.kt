@@ -1,35 +1,35 @@
 package org.techtown.myapplication
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.main.MySharedPreferences
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_buyerlist_second.*
+import kotlinx.android.synthetic.main.activity_buyerlist_second.address
+import kotlinx.android.synthetic.main.activity_buyerlist_second.zipcode
+import kotlinx.android.synthetic.main.activity_trade_process.*
 
 class BuyerlistActivity_second : AppCompatActivity() {
 
     lateinit var send_spin : Spinner
-    lateinit var bottomNav_nxt : BottomNavigationView
+    lateinit var bottomNav_nxt : Button
     lateinit var whoEdit : EditText
 
     lateinit var database : FirebaseDatabase
     private lateinit var dbref : DatabaseReference
-    private lateinit var sellerRecyclerView: RecyclerView
-    private lateinit var sellerArrayList: ArrayList<Seller>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buyerlist_second)
 
         send_spin = findViewById(R.id.send_spin)
-        bottomNav_nxt = findViewById(R.id.bottomNav_nxt)
+        bottomNav_nxt = findViewById(R.id.okaybtn)
         whoEdit = findViewById(R.id.whoEdit)
 
         // 스피너 설정 string - array[send_group]
@@ -48,7 +48,7 @@ class BuyerlistActivity_second : AppCompatActivity() {
         bottomNav_nxt.setOnClickListener {
 
             val buyer : String = whoEdit.text.toString()
-            val howmuchEdit = intent.getStringExtra("howmuchSell")
+            val howmuchEdit2 = intent.getStringExtra("howmuchSell")
 
             var intent = Intent(this, BuyerlistActivity_third::class.java)
 
@@ -61,57 +61,96 @@ class BuyerlistActivity_second : AppCompatActivity() {
             //            }
             //        }
             intent.putExtra("buyer", buyer)
-            intent.putExtra("howmuchSell", howmuchEdit)
+            intent.putExtra("howmuchSell", howmuchEdit2)
             startActivity(intent)
 
         }
 
-        sellerRecyclerView = findViewById(R.id.sellerlist_2nd)
-        sellerRecyclerView.layoutManager = LinearLayoutManager(this)
-        sellerRecyclerView.setHasFixedSize(true)
+        database = FirebaseDatabase.getInstance()
 
-        sellerArrayList = arrayListOf<Seller>()
-        getSellerData()
+        // 판매처 보여줌
+        var y=""
+
+        val x = MySharedPreferences.getUserId(this)
+
+        if(x=="test@gmail.com")
+            y="-MwCVkmDQ7lbUpG05BRH"
 
 
+        var myRef5 = database.getReference("Users").child("users").child(y).child("zipcode")
+        var myRef6 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("address")
 
-    }
 
-    private fun getSellerData() {
-        dbref = FirebaseDatabase.getInstance().getReference("seller")
-
-        dbref.child("1").get().addOnSuccessListener {
-
-            if (it.exists()) {
-                val Selpowerplant = it.child("Selpowerplant").value
-                val memo_seller_2nd: TextView = findViewById(R.id.memo_seller_2nd)
-
-                memo_seller_2nd.text = Selpowerplant.toString()
+        myRef5.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value1 = datasnapshot?.value
+                zipcode.text=value1.toString()
             }
-
-        }
-
-        dbref.addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                if (snapshot.exists()){
-                    for (userSnapshot in snapshot.children) {
-
-                        val seller = userSnapshot.getValue(Seller::class.java)
-                        sellerArrayList.add(seller!!)
-                    }
-
-                    sellerRecyclerView.adapter = SellerAdapter(sellerArrayList)
-                }
-            }
-
             override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
+        myRef6.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value2 = datasnapshot?.value
+                address.text=value2.toString()
 
             }
-
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
         })
+
     }
+
+//        sellerRecyclerView = findViewById(R.id.sellerlist_2nd)
+//        sellerRecyclerView.layoutManager = LinearLayoutManager(this)
+//        sellerRecyclerView.setHasFixedSize(true)
+
+//        sellerArrayList = arrayListOf<Seller>()
+//        getSellerData()
+
+
+
+}
+// 메모장에 발전소1로 표시 - 데이터베이스에서 값을 가져옴
+//    private fun getSellerData() {
+//    dbref = FirebaseDatabase.getInstance().getReference("seller")
+//
+//    dbref.child("1").get().addOnSuccessListener {
+//
+//        if (it.exists()) {
+//            val Selpowerplant = it.child("Selpowerplant").value
+//            val memo_seller_2nd: TextView = findViewById(R.id.memo_seller_2nd)
+//
+//            memo_seller_2nd.text = Selpowerplant.toString()
+//        }
+//
+//    }
+//}
+//
+// 리사이클려뷰로 데이터베이스에 있는 발전소1에 대한 정보를 가져와 보여줌
+//        dbref.addValueEventListener(object : ValueEventListener {
+//
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                if (snapshot.exists()){
+//                    for (userSnapshot in snapshot.children) {
+//
+//                        val seller = userSnapshot.getValue(Seller::class.java)
+//                        sellerArrayList.add(seller!!)
+//                    }
+//
+//                    sellerRecyclerView.adapter = SellerAdapter(sellerArrayList)
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//
+//            }
+//
+//        })
+//    }
 
     // 2번째 액티비티(전력 판매량 입력하는 페이지) override fun onCreate(savedInstanceState: Bundle?) {} 에 입력해야 함
     // 확인버튼 id는 바꿔도 됨
@@ -125,8 +164,4 @@ class BuyerlistActivity_second : AppCompatActivity() {
 //        // intent로 다른 엑티비티로 변수 넘기기 가능
 //        intent.putExtra("howmuchSell", howmuchEdit)
 //        startActivity(intent)
-
-        //updateData(howmuchEdit)
-
     //}
-}

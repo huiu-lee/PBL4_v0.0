@@ -7,7 +7,7 @@ class User() {
 
     lateinit var email : String
     lateinit var password : String
-    lateinit var safeNum : String
+    var safeNum : String ?= null
     lateinit var id : String
     var measure by Delegates.notNull<Int>()
     var point by Delegates.notNull<Int>()

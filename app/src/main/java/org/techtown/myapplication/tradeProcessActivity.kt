@@ -51,17 +51,17 @@ class tradeProcessActivity : AppCompatActivity() {
         */
 
         okaybtn.setOnClickListener{
-            if (run == false) {
-                run = true
-                val thread = Elect()
-                thread.start()
-            }
+//            if (run == false) {
+//                run = true
+//                val thread = Elect()
+//                thread.start()
+//            }
 
-            var howmuchEdit = sellelec.text.toString()
+            inputelec=sellelec.text.toString().toInt()
 
             var intent = Intent(this, BuyerlistActivity_second::class.java)
             // intent로 다른 엑티비티로 변수 넘기기 가능
-            intent.putExtra("howmuchSell", howmuchEdit)
+            intent.putExtra("howmuchSell", inputelec)
             startActivity(intent)
 
 
@@ -75,12 +75,14 @@ class tradeProcessActivity : AppCompatActivity() {
 
         val x = MySharedPreferences.getUserId(this)
 
-        if(x=="test@gmail.com")
-            y="-MwCVkmDQ7lbUpG05BRH"
+        if(x=="test@gmail.com") {
+            y = "-MwCVkmDQ7lbUpG05BRH"
+        }
 
 
         var myRef1 = database.getReference("Users").child("users").child(y).child("zipcode")
-        var myRef2 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("address")
+        var myRef2 = database.getReference("Users").child("users").child("MwCVkmDQ7lbUpG05BRH").child("address")
+        var myRef3 = database.getReference("Users").child("users").child(y).child("point")
 
 
         myRef1.addValueEventListener(object : ValueEventListener {
@@ -102,6 +104,18 @@ class tradeProcessActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })
+        myRef3.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val value3 = datasnapshot?.value
+                xx.text=value3.toString()
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+
 
     }
 
@@ -119,14 +133,14 @@ class tradeProcessActivity : AppCompatActivity() {
             if(x=="test@gmail.com")
                 y="-MwCVkmDQ7lbUpG05BRH"
 
-            var myRef3 = database.getReference("Users").child("users").child(y).child("elec")
+            var myRef4 = database.getReference("Users").child("users").child(y).child("elec")
 
-            myRef3.addListenerForSingleValueEvent(object : ValueEventListener {
+            myRef4.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(datasnapshot: DataSnapshot) {
                     val value1 = datasnapshot.getValue<Int>()
                     input=value1.toString().toInt()
                     total=input-inputelec
-                    myRef3.setValue(total)
+                    myRef4.setValue(total)
                 }
                 override fun onCancelled(error: DatabaseError) {
                     Log.w(ContentValues.TAG, "Failed to read value.", error.toException())

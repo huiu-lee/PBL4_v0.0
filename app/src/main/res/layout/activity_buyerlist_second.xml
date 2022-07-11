@@ -34,29 +34,91 @@
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/dateTvLayout"
+        android:layout_width="414dp"
+        android:layout_height="120dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/trade_pg2_bg"
+        android:gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/howmuchSell"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resource_titleLayout">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sellerlist_2nd"
-        android:layout_width="412dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav_nxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/seller_item" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.6"
+            android:text="판매처"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="-400dp"
+            android:gravity="right"
+            android:text="발전소1"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/zipcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.6"
+            android:gravity="right"
+            android:text="01797"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.6"
+            android:gravity="right"
+            android:text="서울특별시 노원구\n화랑로 서울여자대학교"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/sellerlist_2nd"-->
+<!--        android:layout_width="412dp"-->
+<!--        android:layout_height="124dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:background="@color/gray"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/today_generatedTvLayout"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.529"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:listitem="@layout/seller_item" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/howmuchSell"
         android:layout_width="412dp"
         android:layout_height="50dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav_nxt"
+        android:background="@drawable/trade_pg2_bg"
+        app:layout_constraintBottom_toTopOf="@+id/today_generatedTvLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="판매전력량"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/howmuchbuy"
             app:layout_constraintHorizontal_bias="0.056"
@@ -83,15 +144,27 @@
             android:id="@+id/howmuchbuy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="000,000W"
-            android:textColor="@color/black"
+            android:layout_marginEnd="48dp"
+            android:text="000,000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.347"
+            app:layout_constraintVertical_bias="0.521"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="W"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.521"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -100,10 +173,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="누구에게 보내시겠어요?"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav_nxt"
+        app:layout_constraintBottom_toTopOf="@+id/today_generatedTvLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,20 +210,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/exclude"
-        android:layout_width="370dp"
-        android:layout_height="184dp"
+        android:layout_width="356dp"
+        android:layout_height="165dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="44dp"
         android:background="@drawable/memo_page2nd"
         android:elevation="4dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav_nxt"
+        app:layout_constraintBottom_toTopOf="@+id/today_generatedTvLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/howmuchSell"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.814"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -159,7 +230,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="발전소1"
-            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -172,16 +242,25 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav_nxt"
+    <LinearLayout
+        android:id="@+id/today_generatedTvLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_green_90"
-        android:textAlignment="center"
-        app:itemTextColor="@color/white"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:menu="@menu/ok_bottomnavigationview" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/okaybtn"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/main_green_90"
+            android:text="확인"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
