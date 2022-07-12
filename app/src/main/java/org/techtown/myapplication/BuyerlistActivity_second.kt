@@ -41,7 +41,7 @@ class BuyerlistActivity_second : AppCompatActivity() {
         if (intent.hasExtra("howmuchSell")) {
             val howmuchEdit = intent.getStringExtra("howmuchSell")
             if (howmuchEdit != null) {
-                howmuchbuy.text = howmuchEdit.toString()
+                howmuchbuy.text = howmuchEdit
             }
         }
 
@@ -113,6 +113,7 @@ class BuyerlistActivity_second : AppCompatActivity() {
 
 
 }
+
 // 메모장에 발전소1로 표시 - 데이터베이스에서 값을 가져옴
 //    private fun getSellerData() {
 //    dbref = FirebaseDatabase.getInstance().getReference("seller")

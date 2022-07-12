@@ -69,8 +69,8 @@ class LoginActivity : AppCompatActivity() {
 
         // 로그아웃 버튼이지만 거래 페이지가 덜 개발되어서 일시적으로 안심번호 팝업창을 뜨게 함
         logout.setOnClickListener {
-            var intent = Intent(this, Logout_Activity::class.java)
-            startActivity(intent)
+            //var intent = Intent(this, Logout_Activity::class.java)
+            //startActivity(intent)
 
             showCustomAlert()
         }

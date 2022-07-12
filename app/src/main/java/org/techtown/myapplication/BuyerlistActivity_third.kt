@@ -27,6 +27,7 @@ class BuyerlistActivity_third : AppCompatActivity() {
 
     lateinit var database : FirebaseDatabase
     private lateinit var dbref : DatabaseReference
+    private lateinit var dbref2 : DatabaseReference
     private lateinit var buyerArrayList: ArrayList<Buyer>
     //lateinit var databaseReference: DatabaseReference
 
@@ -43,6 +44,8 @@ class BuyerlistActivity_third : AppCompatActivity() {
 //
 //        sellerArrayList = arrayListOf<Seller>()
 //        getSellerData()
+
+        howmuchbuy = findViewById(R.id.howmuchbuy)
 
         if (intent.hasExtra("howmuchSell")) {
             val howmuchEdit3 = intent.getStringExtra("howmuchSell")
@@ -177,7 +180,7 @@ class BuyerlistActivity_third : AppCompatActivity() {
 
         safeYes.setOnClickListener {
 
-            var safeNum = safeEdit.text.toString().trim()
+            var safeNum = safeEdit.text.toString()
 
             if (safeNum.isEmpty()) {
                 Toast.makeText(this, "Safe Number required", Toast.LENGTH_SHORT).show()
@@ -203,8 +206,8 @@ class BuyerlistActivity_third : AppCompatActivity() {
     // 입력된 안심번호와 데베에 저장된 안심번호 비교
     private fun isSafeNumExist(safeNum: String) {
 
-        //databaseReference = database.getReference("Users").child("users")
-        dbref.addValueEventListener(object : ValueEventListener {
+        dbref2 = database.getReference("Users").child("users")
+        dbref2.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 var list = java.util.ArrayList<User>()
@@ -219,7 +222,7 @@ class BuyerlistActivity_third : AppCompatActivity() {
                     list.add(value!!)
                 }
 
-                if (issafenumexist == true) {
+                if (issafenumexist) {
                     Toast.makeText(this@BuyerlistActivity_third, "Safe number match", Toast.LENGTH_SHORT).show()
 
                     if (intent.hasExtra("howmuchSell")) {
@@ -227,11 +230,10 @@ class BuyerlistActivity_third : AppCompatActivity() {
                         if (howmuchEdit != null) {
                             updateData(howmuchEdit)
                             updatePoint(howmuchEdit)
+
+                            startActivity(Intent(applicationContext, mainActivity::class.java))
                         }
                     }
-
-
-                    startActivity(Intent(applicationContext, mainActivity::class.java))
                 } else {
                     Toast.makeText(this@BuyerlistActivity_third, "Safe number not match! check your safe number", Toast.LENGTH_SHORT).show()
                 }

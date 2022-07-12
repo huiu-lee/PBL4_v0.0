@@ -1,12 +1,15 @@
 package org.techtown.myapplication
 
+import com.google.firebase.database.PropertyName
 import kotlin.properties.Delegates
 
 // 데베에 저장되는 변수값
 class User() {
 
+    @PropertyName("email")
     lateinit var email : String
     lateinit var password : String
+    @PropertyName("safeNum")
     var safeNum : String ?= null
     lateinit var id : String
     var measure by Delegates.notNull<Int>()
