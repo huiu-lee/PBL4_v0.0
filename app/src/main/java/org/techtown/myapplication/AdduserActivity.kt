@@ -7,6 +7,7 @@ import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_trade_process.*
 import org.techtown.myapplication.databinding.ActivityAdduserBinding
 
 class AdduserActivity : AppCompatActivity() {
@@ -36,7 +37,9 @@ class AdduserActivity : AppCompatActivity() {
                 if (isValidEmail(email)) {
 
                     var id = databaseReference.push().key
-                    val User = User(email, password, safeNum, id!!, measure = 0, point = 10, email)
+                    val User = User(email, password, safeNum, id!!, measure = 0, point = 10, email,
+                        elec.toString(), address.toString(), zipcode.toString()
+                    )
 
                     //Data Inserted
                     databaseReference.child(id).setValue(User)

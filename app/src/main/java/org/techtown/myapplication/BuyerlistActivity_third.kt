@@ -25,14 +25,14 @@ import java.util.regex.Pattern
 
 class BuyerlistActivity_third : AppCompatActivity() {
 
-    lateinit var database : FirebaseDatabase
-    private lateinit var dbref : DatabaseReference
-    private lateinit var dbref2 : DatabaseReference
+    lateinit var database: FirebaseDatabase
+    private lateinit var dbref: DatabaseReference
+    private lateinit var dbref2: DatabaseReference
     private lateinit var buyerArrayList: ArrayList<Buyer>
     //lateinit var databaseReference: DatabaseReference
 
-    lateinit var bottomNav_nxt : Button
-    lateinit var howmuchbuy : TextView
+    lateinit var bottomNav_nxt: Button
+    lateinit var howmuchbuy: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,23 +57,25 @@ class BuyerlistActivity_third : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         // 판매처 보여줌
-        var y=""
+        var y = ""
 
         val x = MySharedPreferences.getUserId(this)
 
-        if(x=="test@gmail.com")
-            y="-MwCVkmDQ7lbUpG05BRH"
+        if (x == "test@gmail.com")
+            y = "-MwCVkmDQ7lbUpG05BRH"
 
 
         var myRef7 = database.getReference("Users").child("users").child(y).child("zipcode")
-        var myRef8 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("address")
+        var myRef8 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH")
+            .child("address")
 
 
         myRef7.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val value1 = datasnapshot?.value
-                zipcode.text=value1.toString()
+                zipcode.text = value1.toString()
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
@@ -81,9 +83,10 @@ class BuyerlistActivity_third : AppCompatActivity() {
         myRef8.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val value2 = datasnapshot?.value
-                address.text=value2.toString()
+                address.text = value2.toString()
 
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
@@ -92,6 +95,7 @@ class BuyerlistActivity_third : AppCompatActivity() {
         // 구매처 보여줌
         if (intent.hasExtra("buyer")) {
             val buyer = intent.getStringExtra("buyer")
+            val howmuchEdit3 = intent.getStringExtra("howmuchSell")
             if (buyer != null) {
                 dbref = FirebaseDatabase.getInstance().getReference("buyer")
 
@@ -104,15 +108,15 @@ class BuyerlistActivity_third : AppCompatActivity() {
                         val point = it.child("point").value
                         Toast.makeText(this, "Successfully Read", Toast.LENGTH_SHORT).show()
 
-                        val buy_powerplant : TextView = findViewById(R.id.buy_powerplant)
-                        val buy_address : TextView = findViewById(R.id.buy_address)
+                        val buy_powerplant: TextView = findViewById(R.id.buy_powerplant)
+                        val buy_address: TextView = findViewById(R.id.buy_address)
                         val memo_buyer_3rd: TextView = findViewById(R.id.memo_buyer_3rd)
                         val memo_point_3rd: TextView = findViewById(R.id.memo_point_3rd)
 
                         buy_powerplant.text = Buypowerplant.toString()
                         buy_address.text = Buyaddress.toString()
                         memo_buyer_3rd.text = Buypowerplant.toString()
-                        memo_point_3rd.text = point.toString()
+                        memo_point_3rd.text = howmuchEdit3.toString()
                     } else {
                         Toast.makeText(this, "buyer Doesn't Exist", Toast.LENGTH_SHORT).show()
                     }
@@ -175,6 +179,9 @@ class BuyerlistActivity_third : AppCompatActivity() {
         var v1 = layoutInflater.inflate(R.layout.safe_dialog, null)
         builder.create()
 
+        builder.setView(v1)
+        builder.show()
+
         var safeEdit = v1.findViewById<EditText>(R.id.safeEdit)
         var safeYes = v1.findViewById<TextView>(R.id.safeYes)
 
@@ -187,14 +194,15 @@ class BuyerlistActivity_third : AppCompatActivity() {
             } else {
                 if (isValidSafeNum(safeNum)) {
                     isSafeNumExist(safeNum)
+
                 } else {
                     Toast.makeText(this, "Check your safe number", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
-        builder.setView(v1)
-        builder.show()
+
+
 
     }
 
@@ -223,19 +231,27 @@ class BuyerlistActivity_third : AppCompatActivity() {
                 }
 
                 if (issafenumexist) {
-                    Toast.makeText(this@BuyerlistActivity_third, "Safe number match", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@BuyerlistActivity_third,
+                        "Safe number match",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                     if (intent.hasExtra("howmuchSell")) {
                         val howmuchEdit = intent.getStringExtra("howmuchSell")
                         if (howmuchEdit != null) {
                             updateData(howmuchEdit)
-                            updatePoint(howmuchEdit)
+                            //updatePoint(howmuchEdit)
 
                             startActivity(Intent(applicationContext, mainActivity::class.java))
                         }
                     }
                 } else {
-                    Toast.makeText(this@BuyerlistActivity_third, "Safe number not match! check your safe number", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@BuyerlistActivity_third,
+                        "Safe number not match! check your safe number",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
@@ -246,7 +262,7 @@ class BuyerlistActivity_third : AppCompatActivity() {
     }
 
     private fun updateData(howmuchEdit: String) {
-        // 확인 누르면 DB의 SelEditpower이 입력된 값으로 바뀜
+        // 확인 누르면 DB의 elec이 입력된 값으로 바뀜
         database = FirebaseDatabase.getInstance()
 
         if (intent.hasExtra("buyer")) {
@@ -254,59 +270,203 @@ class BuyerlistActivity_third : AppCompatActivity() {
             if (buyer != null) {
 
                 // 판매자의 전력량 업데이트
+                var strinputlec = ""
                 var inputelec = 0
-                var total = 0
-                var input = 0
 
-                inputelec=howmuchEdit.toInt()
+                strinputlec = howmuchEdit
+                inputelec = strinputlec.toInt()
 
-                var y=""
+                var y = ""
 
                 val x = MySharedPreferences.getUserId(this@BuyerlistActivity_third)
 
-                if(x=="test@gmail.com")
-                    y="-MwCVkmDQ7lbUpG05BRH"
+                if (x == "test@gmail.com")
+                    y = "-MwCVkmDQ7lbUpG05BRH"
 
-                var myRef9 = database.getReference("Users").child("users").child(y).child("elec")
 
-                myRef9.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(datasnapshot: DataSnapshot) {
-                        val value1 = datasnapshot.getValue<Int>()
-                        input=value1.toString().toInt()
-                        total=input-inputelec
-                        myRef9.setValue(total)
+                var myRef9 = database.getReference("Users").child("users")
+
+//                myRef9.addValueEventListener(object : ValueEventListener {
+//                    override fun onDataChange(datasnapshot: DataSnapshot) {
+//                        val value1 = datasnapshot?.value
+//                        var elec = value1.toString()
+//                        var last = elec.toString()
+//                        var value = last.toInt()
+//
+//                        var total = value - inputelec
+//                        var output = total.toString()
+//                        updateOuput(output)
+//                    }
+//
+//                    override fun onCancelled(error: DatabaseError) {
+//                        Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+//                    }
+//                })
+
+                myRef9.child(y).get().addOnSuccessListener {
+
+                    if (it.exists()) {
+
+                        var elec = it.child("elec").value
+                        var last = elec.toString()
+                        var value = last.toInt()
+
+                        var total = value - inputelec
+                        var output = total.toString()
+                        updateOuput(output)
+
+                    } else {
+
                     }
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                    }
-                })
+                }.addOnFailureListener {
+
+                }
+
+
+//                var database2 = FirebaseDatabase.getInstance()
+//                var databaseReference2 = database2.getReference("Users").child("users").child(y)
+//                var getdata = object : ValueEventListener {
+//                    override fun onDataChange(snapshot: DataSnapshot) {
+//                        for (i in snapshot.children) {
+//                            var elec = i.child("elec").getValue()
+//                            var last = elec.toString()
+//                            var value = last.toInt()
+//
+//                            var total = value - inputelec
+//                            var output = total.toString()
+//                            updateOuput(output)
+//                        }
+//
+//                    }
+//
+//                    override fun onCancelled(error: DatabaseError) {
+//
+//                    }
+//                }
+//                databaseReference2.addValueEventListener(getdata)
+//                databaseReference2.addListenerForSingleValueEvent(getdata)
 
                 // 구매자의 전력량 업데이트
+                var strinputlec2 = ""
                 var inputelec2 = 0
-                var total2 = 0
-                var input2 = 0
 
-                inputelec2=howmuchEdit.toInt()
+                strinputlec2 = howmuchEdit
+                inputelec2 = strinputlec2.toInt()
 
-                var myRef10 = database.getReference("buyer").child(buyer).child("elec")
 
-                myRef10.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(datasnapshot: DataSnapshot) {
-                        val value2 = datasnapshot.getValue<Int>()
-                        input2=value2.toString().toInt()
-                        total2=input2+inputelec2
-                        myRef10.setValue(total2)
+                var myRef10 = database.getReference("buyer")
+
+                myRef10.child(buyer).get().addOnSuccessListener {
+
+                    if (it.exists()) {
+
+                        var elec2 = it.child("elec").value
+                        var last2 = elec2.toString()
+                        var value2 = last2.toInt()
+
+                        var total2 = value2 + inputelec2
+                        var input2 = total2.toString()
+                        updateInput(input2)
+
                     }
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                    }
-                })
+                }.addOnFailureListener {
+
+                }
 
             }
-
-
         }
     }
+
+    private fun updateOuput(output: String) {
+
+        var y = ""
+
+        val x = MySharedPreferences.getUserId(this@BuyerlistActivity_third)
+
+        if (x == "test@gmail.com")
+            y = "-MwCVkmDQ7lbUpG05BRH"
+
+//        val myRef1 = database.getReference("Users").child("users").child(y).child("elec")
+//        myRef1.setValue(output)
+
+
+        database = FirebaseDatabase.getInstance()
+        var myRef10 = database.getReference("Users").child("users")
+        myRef10.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postsnapshot in dataSnapshot.children) {
+
+                    var myRef1 = database.getReference("Users").child("users").child(y).child("elec")
+                    myRef1.setValue(output)
+
+                    Toast.makeText(this@BuyerlistActivity_third, "Successfuly Updated", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+        finish()
+
+    }
+
+    private fun updateInput(input2: String) {
+
+        if (intent.hasExtra("buyer")) {
+            val buyer = intent.getStringExtra("buyer")
+            if (buyer != null) {
+
+//                var myRef2 = database.getReference("buyer").child(buyer).child("elec")
+//                myRef2.setValue(input2)
+
+                database = FirebaseDatabase.getInstance()
+                var myRef11 = database.getReference("buyer").child(buyer)
+                myRef11.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (postsnapshot in dataSnapshot.children) {
+
+                            var myRef2 = database.getReference("buyer").child(buyer).child("elec")
+                            myRef2.setValue(input2)
+
+                            Toast.makeText(this@BuyerlistActivity_third, "Successfuly Updated", Toast.LENGTH_SHORT).show()
+
+
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+                finish()
+
+            }
+        }
+
+
+
+
+//        if (intent.hasExtra("buyer")) {
+//            val buyer = intent.getStringExtra("buyer")
+//            if (buyer != null) {
+//
+//                database = FirebaseDatabase.getInstance()
+//                var myRef12 = database.getReference("buyer").child(buyer)
+//                myRef12.addValueEventListener(object : ValueEventListener {
+//                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                        for (postsnapshot in dataSnapshot.children) {
+//
+//                            var myRef2 = database.getReference("buyer").child(buyer).child("elec")
+//                            myRef2.setValue(input2)
+//
+//                            Toast.makeText(this@BuyerlistActivity_third, "Successfuly Updated", Toast.LENGTH_SHORT).show()
+//
+//
+//                        }
+//                    }
+//                    override fun onCancelled(error: DatabaseError) {}
+//                })
+//                finish()
+//            }
+//        }
+    }
+
 
     private fun updatePoint(howmuchEdit: String) {
 
@@ -315,58 +475,118 @@ class BuyerlistActivity_third : AppCompatActivity() {
             if (buyer != null) {
 
                 // 판매자의 포인트 업데이트
-                var point = 0
-                var total3 = 0
-                var input3 = 0
+                var inputpoint = ""
+                var pointlec = 0
 
-                point=howmuchEdit.toInt()
+                inputpoint = howmuchEdit
+                pointlec = inputpoint.toInt()
 
-                var y=""
+                var y = ""
 
                 val x = MySharedPreferences.getUserId(this@BuyerlistActivity_third)
 
-                if(x=="test@gmail.com")
-                    y="-MwCVkmDQ7lbUpG05BRH"
+                if (x == "test@gmail.com")
+                    y = "-MwCVkmDQ7lbUpG05BRH"
 
-                var myRef11 = database.getReference("Users").child("users").child(y).child("point")
 
-                myRef11.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(datasnapshot: DataSnapshot) {
-                        val value1 = datasnapshot.getValue<Int>()
-                        input3=value1.toString().toInt()
-                        total3=input3+point
-                        myRef11.setValue(total3)
+                var myRef12= database.getReference("Users").child("users")
+
+                myRef12.child(y).get().addOnSuccessListener {
+
+                    if (it.exists()) {
+
+                        var point = it.child("point").value
+                        var last2 = point.toString()
+                        var value2 = last2.toInt()
+
+                        var total2 = value2 + pointlec
+                        updateIuputPoint(total2)
+
+                    } else {
+
                     }
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                    }
-                })
+                }.addOnFailureListener {
+
+                }
+
 
                 // 구매자의 포인트 업데이트
-                var point2 = 0
-                var total4 = 0
-                var input4 = 0
+                var myRef13 = database.getReference("buyer")
 
-                point2=howmuchEdit.toInt()
+                myRef13.child(buyer).get().addOnSuccessListener {
 
-                var myRef12 = database.getReference("buyer").child(buyer).child("point")
+                    if (it.exists()) {
 
-                myRef12.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(datasnapshot: DataSnapshot) {
-                        val value2 = datasnapshot.getValue<Int>()
-                        input4=value2.toString().toInt()
-                        total4=input4-point2
-                        myRef12.setValue(total4)
+                        var point2 = it.child("point").value
+                        var last3 = point2.toString()
+                        var value3 = last3.toInt()
+
+                        var total3 = value3 - pointlec
+                        updateOuputPoint(total3)
+
+                    } else {
+
                     }
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                    }
-                })
+                }.addOnFailureListener {
+
+                }
 
             }
         }
+    }
+
+    private fun updateIuputPoint(total2 : Int) {
+
+        var y = ""
+
+        val x = MySharedPreferences.getUserId(this@BuyerlistActivity_third)
+
+        if (x == "test@gmail.com")
+            y = "-MwCVkmDQ7lbUpG05BRH"
+
+        database = FirebaseDatabase.getInstance()
+        var myRef14 = database.getReference("Users").child("users")
+        myRef14.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postsnapshot in dataSnapshot.children) {
+
+                    var myRef3 = database.getReference("Users").child("users").child(y).child("point")
+                    myRef3.setValue(total2)
+
+                    Toast.makeText(this@BuyerlistActivity_third, "Successfuly Updated", Toast.LENGTH_SHORT).show()
 
 
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+        finish()
 
+    }
+
+    private fun updateOuputPoint(total3 : Int) {
+
+        if (intent.hasExtra("buyer")) {
+            val buyer = intent.getStringExtra("buyer")
+            if (buyer != null) {
+                database = FirebaseDatabase.getInstance()
+                var myRef15 = database.getReference("buyer").child(buyer)
+                myRef15.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (postsnapshot in dataSnapshot.children) {
+
+                            var myRef4 = database.getReference("buyer").child(buyer).child("point")
+                            myRef4.setValue(total3)
+
+                            Toast.makeText(this@BuyerlistActivity_third, "Successfuly Updated", Toast.LENGTH_SHORT).show()
+
+
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+                finish()
+            }
+        }
     }
 }

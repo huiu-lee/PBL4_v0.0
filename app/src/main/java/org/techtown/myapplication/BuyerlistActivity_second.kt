@@ -17,12 +17,12 @@ import kotlinx.android.synthetic.main.activity_trade_process.*
 
 class BuyerlistActivity_second : AppCompatActivity() {
 
-    lateinit var send_spin : Spinner
-    lateinit var bottomNav_nxt : Button
-    lateinit var whoEdit : EditText
+    lateinit var send_spin: Spinner
+    lateinit var bottomNav_nxt: Button
+    lateinit var whoEdit: EditText
 
-    lateinit var database : FirebaseDatabase
-    private lateinit var dbref : DatabaseReference
+    lateinit var database: FirebaseDatabase
+    private lateinit var dbref: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,8 @@ class BuyerlistActivity_second : AppCompatActivity() {
         // 스피너 설정 string - array[send_group]
         val send_group = resources.getStringArray(R.array.send_group)
 
-        val sendAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, send_group)
+        val sendAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, send_group)
         send_spin.adapter = sendAdapter
 
         if (intent.hasExtra("howmuchSell")) {
@@ -47,7 +48,7 @@ class BuyerlistActivity_second : AppCompatActivity() {
 
         bottomNav_nxt.setOnClickListener {
 
-            val buyer : String = whoEdit.text.toString()
+            val buyer: String = whoEdit.text.toString()
             val howmuchEdit2 = intent.getStringExtra("howmuchSell")
 
             var intent = Intent(this, BuyerlistActivity_third::class.java)
@@ -69,23 +70,25 @@ class BuyerlistActivity_second : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         // 판매처 보여줌
-        var y=""
+        var y = ""
 
         val x = MySharedPreferences.getUserId(this)
 
-        if(x=="test@gmail.com")
-            y="-MwCVkmDQ7lbUpG05BRH"
+        if (x == "test@gmail.com")
+            y = "-MwCVkmDQ7lbUpG05BRH"
 
 
         var myRef5 = database.getReference("Users").child("users").child(y).child("zipcode")
-        var myRef6 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH").child("address")
+        var myRef6 = database.getReference("Users").child("users").child("-MwCVkmDQ7lbUpG05BRH")
+            .child("address")
 
 
         myRef5.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val value1 = datasnapshot?.value
-                zipcode.text=value1.toString()
+                zipcode.text = value1.toString()
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
@@ -93,76 +96,14 @@ class BuyerlistActivity_second : AppCompatActivity() {
         myRef6.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val value2 = datasnapshot?.value
-                address.text=value2.toString()
+                address.text = value2.toString()
 
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
             }
         })
 
     }
-
-//        sellerRecyclerView = findViewById(R.id.sellerlist_2nd)
-//        sellerRecyclerView.layoutManager = LinearLayoutManager(this)
-//        sellerRecyclerView.setHasFixedSize(true)
-
-//        sellerArrayList = arrayListOf<Seller>()
-//        getSellerData()
-
-
-
 }
-
-// 메모장에 발전소1로 표시 - 데이터베이스에서 값을 가져옴
-//    private fun getSellerData() {
-//    dbref = FirebaseDatabase.getInstance().getReference("seller")
-//
-//    dbref.child("1").get().addOnSuccessListener {
-//
-//        if (it.exists()) {
-//            val Selpowerplant = it.child("Selpowerplant").value
-//            val memo_seller_2nd: TextView = findViewById(R.id.memo_seller_2nd)
-//
-//            memo_seller_2nd.text = Selpowerplant.toString()
-//        }
-//
-//    }
-//}
-//
-// 리사이클려뷰로 데이터베이스에 있는 발전소1에 대한 정보를 가져와 보여줌
-//        dbref.addValueEventListener(object : ValueEventListener {
-//
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                if (snapshot.exists()){
-//                    for (userSnapshot in snapshot.children) {
-//
-//                        val seller = userSnapshot.getValue(Seller::class.java)
-//                        sellerArrayList.add(seller!!)
-//                    }
-//
-//                    sellerRecyclerView.adapter = SellerAdapter(sellerArrayList)
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//
-//            }
-//
-//        })
-//    }
-
-    // 2번째 액티비티(전력 판매량 입력하는 페이지) override fun onCreate(savedInstanceState: Bundle?) {} 에 입력해야 함
-    // 확인버튼 id는 바꿔도 됨
-    // howmuchEdit은 EditText의 id, 바꿔도 됨
-    //확인버튼 누르면
-//    deal_next.setOnClickListener {
-//
-//        var howmuchEdit = howmuchEdit.text.toString()
-//
-//        var intent = Intent(this, BuyerlistActivity_second::class.java)
-//        // intent로 다른 엑티비티로 변수 넘기기 가능
-//        intent.putExtra("howmuchSell", howmuchEdit)
-//        startActivity(intent)
-    //}

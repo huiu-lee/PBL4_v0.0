@@ -78,9 +78,8 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="206dp"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="20dp"
             android:layout_marginRight="-400dp"
             android:gravity="right"
@@ -271,7 +270,7 @@
             android:id="@+id/memo_point_3rd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="000, 000원"
+            android:text="000, 000"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -280,6 +279,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.770" />
+
+        <TextView
+            android:id="@+id/pointTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="point"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.775" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

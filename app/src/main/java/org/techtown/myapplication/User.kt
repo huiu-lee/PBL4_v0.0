@@ -15,8 +15,12 @@ class User() {
     var measure by Delegates.notNull<Int>()
     var point by Delegates.notNull<Int>()
     lateinit var nickname : String
+    @PropertyName("elec")
+    lateinit var elec : String
+    lateinit var address : String
+    lateinit var zipcode : String
 
-    constructor(email : String, password : String, safeNum : String, id : String, measure : Int, point : Int, nickname : String) : this() {
+    constructor(email : String, password : String, safeNum : String, id : String, measure : Int, point : Int, nickname : String, elec : String, address : String, zipcode : String) : this() {
         this.email = email
         this.password = password
         this.safeNum = safeNum
@@ -24,5 +28,8 @@ class User() {
         this.measure = measure
         this.point = point
         this.nickname = nickname
+        this.elec = elec
+        this.address = address
+        this.zipcode = zipcode
     }
 }

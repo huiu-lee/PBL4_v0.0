@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_trade_process.*
 
 class tradeProcessActivity : AppCompatActivity() {
 
-    var inputelec = 0
+    var inputelec : String = ""
     var total = 0
     var input = 0
 
@@ -57,7 +57,7 @@ class tradeProcessActivity : AppCompatActivity() {
 //                thread.start()
 //            }
 
-            inputelec=sellelec.text.toString().toInt()
+            inputelec=elec.text.toString()
 
             var intent = Intent(this, BuyerlistActivity_second::class.java)
             // intent로 다른 엑티비티로 변수 넘기기 가능
@@ -81,8 +81,8 @@ class tradeProcessActivity : AppCompatActivity() {
 
 
         var myRef1 = database.getReference("Users").child("users").child(y).child("zipcode")
-        var myRef2 = database.getReference("Users").child("users").child("MwCVkmDQ7lbUpG05BRH").child("address")
-        var myRef3 = database.getReference("Users").child("users").child(y).child("point")
+        var myRef2 = database.getReference("Users").child("users").child(y).child("address")
+        var myRef3 = database.getReference("Users").child("users").child(y).child("elec")
 
 
         myRef1.addValueEventListener(object : ValueEventListener {
@@ -119,35 +119,35 @@ class tradeProcessActivity : AppCompatActivity() {
 
     }
 
-    inner class Elect : Thread() {
-        override fun run() {
-
-            inputelec=sellelec.text.toString().toInt()
-
-            database = FirebaseDatabase.getInstance()
-
-            var y=""
-
-            val x = MySharedPreferences.getUserId(this@tradeProcessActivity)
-
-            if(x=="test@gmail.com")
-                y="-MwCVkmDQ7lbUpG05BRH"
-
-            var myRef4 = database.getReference("Users").child("users").child(y).child("elec")
-
-            myRef4.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(datasnapshot: DataSnapshot) {
-                    val value1 = datasnapshot.getValue<Int>()
-                    input=value1.toString().toInt()
-                    total=input-inputelec
-                    myRef4.setValue(total)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-                }
-            })
-        }
-    }
+//    inner class Elect : Thread() {
+//        override fun run() {
+//
+//            inputelec=elec.text.toString().toInt()
+//
+//            database = FirebaseDatabase.getInstance()
+//
+//            var y=""
+//
+//            val x = MySharedPreferences.getUserId(this@tradeProcessActivity)
+//
+//            if(x=="test@gmail.com")
+//                y="-MwCVkmDQ7lbUpG05BRH"
+//
+//            var myRef4 = database.getReference("Users").child("users").child(y).child("elec")
+//
+//            myRef4.addListenerForSingleValueEvent(object : ValueEventListener {
+//                override fun onDataChange(datasnapshot: DataSnapshot) {
+//                    val value1 = datasnapshot.getValue<Int>()
+//                    input=value1.toString().toInt()
+//                    total=input-inputelec
+//                    myRef4.setValue(total)
+//                }
+//                override fun onCancelled(error: DatabaseError) {
+//                    Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+//                }
+//            })
+//        }
+//    }
 }
 
 
